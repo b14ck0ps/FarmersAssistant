@@ -6,11 +6,9 @@
         <div class="flex flex-col bg-gray-900 p-20 rounded md:px-8 py-10">
             <h1 class=" text-2xl font-bold text-gray-200 text-center mb-8 md:text-3xl md:mb-10">Sign in to your account</h1>
             <p>Your Email:</p>
-            <input class="bg-gray-800 my-2 rounded p-3 md:pr-40" type="text" name="email" id=""
-                placeholder="name@email.com">
+            <x-forms.input type="email" name="email" placeholder="name@mail.com" />
             <p>Password:</p>
-            <input class="bg-gray-800 my-2 rounded p-3 md:pr-40" type="password" name="password" id=""
-                placeholder="**********">
+            <x-forms.input type="password" name="password" placeholder="********" />
             <div class="flex justify-between mt-3">
 
                 <div class="flex items-center">
