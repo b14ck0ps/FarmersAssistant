@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\Farmers\RegistrationController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +23,14 @@ Route::get('/', function () {
 Route::get('/signin', function () {
     return view('auth.signin');
 });
-Route::get('/signup', function () {
-    return view('auth.singup');
+Route::get('/signup', [RegistrationController::class, 'showRegistrationForm']);
+Route::get('/dashboard', function () {
+    return view('dashboards.farmers');
+})->name('farmers.dashboard')->middleware('validUser');
+//logout
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect('/signin');
 });
+//* post routes
+Route::post('register', [RegistrationController::class, 'register']);
