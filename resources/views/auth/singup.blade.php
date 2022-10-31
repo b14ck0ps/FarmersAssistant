@@ -14,6 +14,13 @@
                     @enderror
                 </div>
                 <div class="flex flex-col">
+                    <label for="username" class="text-gray-200">Enter Your Username</label>
+                    <x-forms.input type="text" name="username" placeholder="John69" />
+                    @error('username')
+                        <p class="text-red-500 text-sm">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div class="flex flex-col">
                     <label for="email" class="text-gray-200">Enter Your Email</label>
                     <x-forms.input type="email" name="email" placeholder="name@email.com" />
                     @error('email')
