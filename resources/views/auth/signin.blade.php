@@ -1,5 +1,4 @@
 @extends('layouts.app')
-@include('layouts.nav')
 @section('content')
     <div class="flex justify-center items-center h-screen">
 
