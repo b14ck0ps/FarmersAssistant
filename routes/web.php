@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\Farmers\LoginController;
 use App\Http\Controllers\Auth\Farmers\RegistrationController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -34,3 +35,4 @@ Route::get('/logout', function () {
 });
 //* post routes
 Route::post('register', [RegistrationController::class, 'register']);
+Route::post('login', [LoginController::class, 'login']);
