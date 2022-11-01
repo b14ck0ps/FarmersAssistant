@@ -58,4 +58,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Farmers::class);
     }
+    //get full name
+    public function getFullName()
+    {
+        return $this->firstName . ' ' . $this->lastName;
+    }
 }
