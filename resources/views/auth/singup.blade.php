@@ -10,55 +10,79 @@
                         name</label>
                     <input name="fname" type="text" id="first_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="John" required="">
+                        placeholder="John" required="" value="{{ old('fname') }}">
+                    @error('fname')
+                        <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div>
                     <label for="last_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Last
                         name</label>
                     <input name="lname" type="text" id="last_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Doe" required="">
+                        placeholder="Doe" required="" value="{{ old('lname') }}">
+                    @error('lname')
+                        <p class="text-red-500 text-xs
+                        italic">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div>
                     <label for="username"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Username</label>
                     <input name="username" type="text" id="username"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="john123" required="">
+                        placeholder="john123" required="" value="{{ old('username') }}">
+                    @error('username')
+                        <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div>
                     <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Phone
                         number</label>
                     <input name="phone" type="tel" id="phone"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="123-45-678" required="">
+                        placeholder="123-45-678" required="" value="{{ old('phone') }}">
+                    @error('phone')
+                        <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div>
                     <label for="City"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">City</label>
                     <input name="city" type="text" id="City"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="i.e. Dhaka" required="">
+                        placeholder="i.e. Dhaka" required="" value="{{ old('city') }}">
+                    @error('city')
+                        <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div>
                     <label for="Postal Code" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                         Postal Code</label>
                     <input name="postCode" type="number" id="Postal Code"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="1234" required="">
+                        placeholder="1234" required="" value="{{ old('postCode') }}">
+                    @error('postCode')
+                        <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div>
                     <label for="Gender"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Gender</label>
-                    <input type="radio" name="gender" value="male" checked> Male
-                    <input class="ml-5" type="radio" name="gender" value="female"> Female
+                    <input type="radio" name="gender" value="male"
+                        {{ old('gender') == 'male' ? 'checked=' . '"' . 'checked' . '"' : '' }} checked> Male
+                    <input class="ml-5" type="radio" name="gender" value="female"
+                        {{ old('gender') == 'female' ? 'checked=' . '"' . 'checked' . '"' : '' }}> Female
                 </div>
                 <div>
                     <label for="DOB" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                         Date Of Birth</label>
                     <input type="date" name="dob"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        required="">
+                        required="" value="{{ old('dob') }}">
+                    @error('dob')
+                        <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
             <div class="mb-6">
@@ -66,14 +90,20 @@
                     Address</label>
                 <input type="address" name="address"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="1/3 Dhaka , Bangladesh" required="">
+                    placeholder="1/3 Dhaka , Bangladesh" required="" value="{{ old('address') }}">
+                @error('address')
+                    <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                @enderror
             </div>
             <div class="mb-6">
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email
                     address</label>
                 <input type="email" name="email"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="john.doe@company.com" required="">
+                    placeholder="john.doe@company.com" required="" value="{{ old('email') }}">
+                @error('email')
+                    <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                @enderror
             </div>
             <div class="mb-6">
                 <label for="password"
@@ -81,6 +111,9 @@
                 <input type="password" name="password"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="•••••••••" required="">
+                @error('password')
+                    <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                @enderror
             </div>
             <div class="mb-6">
                 <label for="confirm_password"
@@ -89,6 +122,9 @@
                 <input type="password" name="password_confirmation"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="•••••••••" required="">
+                @error('password')
+                    <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                @enderror
             </div>
             <div class="flex items-start mb-6">
                 <div class="flex items-center h-5">
@@ -105,14 +141,3 @@
         </form>
     </div>
 @endsection
-
-{{-- print errors --}}
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
