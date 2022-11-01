@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\Farmers\FarmerProfileController;
 use App\Http\Controllers\Auth\Farmers\LoginController;
 use App\Http\Controllers\Auth\Farmers\RegistrationController;
 use Illuminate\Support\Facades\Route;
@@ -21,18 +22,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/signin', function () {
-    return view('auth.signin');
+Route::middleware(['guest'])->group(function () {
+    Route::get('/register', [RegistrationController::class, 'showRegistrationForm']);
+    Route::post('/register', [RegistrationController::class, 'register'])->name('register');
+    Route::get('/signin', [LoginController::class, 'showLoginForm']);
+    Route::post('/login', [LoginController::class, 'login'])->name('login');
 });
-Route::get('/signup', [RegistrationController::class, 'showRegistrationForm']);
-Route::get('/dashboard', function () {
-    return view('dashboards.farmers');
-})->name('farmers.dashboard')->middleware('validUser');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [FarmerProfileController::class, 'showProfile'])->name('farmers.dashboard');
+    Route::get('/profile/edit', [FarmerProfileController::class, 'showProfileEdit'])->name('farmers.editProfile');
+});
 //logout
 Route::get('/logout', function () {
     Auth::logout();
     return redirect('/signin');
 });
-//* post routes
-Route::post('register', [RegistrationController::class, 'register']);
-Route::post('login', [LoginController::class, 'login']);

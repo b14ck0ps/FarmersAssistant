@@ -11,7 +11,7 @@
                         @svg('tni-signin-o', 'w-5') sign in</a></div>
             @endguest
             @auth
-                <div><a class="flex items-center gap-2 hover:text-orange-500" href="/setting">
+                <div><a class="flex items-center gap-2 hover:text-orange-500" href="{{ route('farmers.editProfile') }}">
                         @svg('uiw-setting-o', 'w-5') Setting</a></div>
                 <div class="pr-4"><a class="flex items-center gap-2 hover:text-orange-500" href="/logout">
                         @svg('tni-signin-o', 'w-5') Log out</a></div>
