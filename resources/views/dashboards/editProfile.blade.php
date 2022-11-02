@@ -105,10 +105,19 @@
                 @enderror
             </div>
             <div class="mb-6">
-                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 ">Password</label>
+                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 ">Old Password</label>
+                <input type="password" name="password_old"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5    "
+                    placeholder="•••••••••" value="{{ old('password_old') }}">
+                @if ($errors->has('invalid_password'))
+                    <h4 class="text-red-700 text-xs italic">{{ $errors->first() }}</h4>
+                @endif
+            </div>
+            <div class="mb-6">
+                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 ">New Password</label>
                 <input type="password" name="password"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5    "
-                    placeholder="•••••••••" required="">
+                    placeholder="•••••••••">
                 @error('password')
                     <p class="text-red-500 text-xs italic">{{ $message }}</p>
                 @enderror
@@ -118,7 +127,7 @@
                     password</label>
                 <input type="password" name="password_confirmation"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5    "
-                    placeholder="•••••••••" required="">
+                    placeholder="•••••••••">
                 @error('password')
                     <p class="text-red-500 text-xs italic">{{ $message }}</p>
                 @enderror

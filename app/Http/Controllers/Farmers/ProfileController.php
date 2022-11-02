@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -22,7 +23,6 @@ class ProfileController extends Controller
     //profile update
     public function updateProfile(Request $request)
     {
-        // Validate the form data
         $this->validate($request, [
             'fname' => 'required|max:30|alpha',
             'lname' => 'required|max:30|alpha',
@@ -33,9 +33,21 @@ class ProfileController extends Controller
             'address' => 'required|max:100',
             'email' => 'required|email|max:255|unique:users,email,' . Auth::user()->id,
             'username' => 'required|max:255|string|unique:users,username,' . Auth::user()->id,
-            'password' => 'required|min:6|confirmed',
         ]);
-
+        // Validate the form data
+        if (is_null($request->password_old)) {
+            $request->password = Auth::user()->password;
+        } else {
+            if (Hash::check($request->password_old, Auth::user()->password)) {
+                $this->validate($request, [
+                    'password' => 'required|min:6|confirmed',
+                ]);
+            } else {
+                return back()->withErrors([
+                    'invalid_password' => 'Old password is incorrect',
+                ]);
+            }
+        }
         // Create and save the farmer
         User::find(Auth::user()->id)->update([
             'firstName' => $request->fname,
@@ -48,7 +60,7 @@ class ProfileController extends Controller
             'dob' => $request->dob,
             'address' => $request->address,
             'email' => $request->email,
-            'password' => bcrypt($request->password),
+            'password' => Hash::make($request->password),
         ]);
 
         $request->session()->regenerate();
