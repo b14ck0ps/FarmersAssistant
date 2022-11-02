@@ -4,8 +4,66 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f936a77575d034eb5879836c753fa791",
+    "content-hash": "3b15cdfee46440235b5c61cc2f158591",
     "packages": [
+        {
+            "name": "andreiio/blade-iconoir",
+            "version": "1.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andreiio/blade-iconoir.git",
+                "reference": "0fe5c03e2ec76db76015bea1006c98a12834e774"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andreiio/blade-iconoir/zipball/0fe5c03e2ec76db76015bea1006c98a12834e774",
+                "reference": "0fe5c03e2ec76db76015bea1006c98a12834e774",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.0",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0|^7.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "AndreiIonita\\BladeIconoir\\BladeIconoirServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AndreiIonita\\BladeIconoir\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrei Ioniță",
+                    "homepage": "https://andrei.io"
+                }
+            ],
+            "description": "A package to easily make use of Iconoir in your Laravel Blade views.",
+            "support": {
+                "issues": "https://github.com/andreiio/blade-iconoir/issues",
+                "source": "https://github.com/andreiio/blade-iconoir/tree/1.9.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/andreiio",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-11-02T12:07:43+00:00"
+        },
         {
             "name": "blade-ui-kit/blade-icons",
             "version": "1.4.1",

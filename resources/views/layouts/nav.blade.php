@@ -17,7 +17,7 @@
                 @endif
                 @if (route('farmers.editProfile') == url()->current() || route('farmers.dashboard') != url()->current())
                     <div><a class="flex items-center gap-2 hover:text-orange-500" href="{{ route('farmers.dashboard') }}">
-                            @svg('uiw-setting-o', 'w-5') Profile</a></div>
+                            @svg('iconoir-profile-circled', 'w-5') Profile</a></div>
                 @endif
 
                 <div class="pr-4"><a class="flex items-center gap-2 hover:text-orange-500" href="/logout">
