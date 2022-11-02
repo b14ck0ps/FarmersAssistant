@@ -20,7 +20,7 @@ class ProfileController extends Controller
         return view('dashboards.editProfile');
     }
     //profile update
-    public function register(Request $request)
+    public function updateProfile(Request $request)
     {
         // Validate the form data
         $this->validate($request, [
@@ -31,13 +31,13 @@ class ProfileController extends Controller
             'gender' => 'required',
             'dob' => 'required|date',
             'address' => 'required|max:100',
-            'email' => 'required|email|max:255|unique:users',
-            'username' => 'required|max:255|string|unique:users',
+            'email' => 'required|email|max:255|unique:users,email,' . Auth::user()->id,
+            'username' => 'required|max:255|string|unique:users,username,' . Auth::user()->id,
             'password' => 'required|min:6|confirmed',
         ]);
 
         // Create and save the farmer
-        $farmer = User::updated([
+        User::find(Auth::user()->id)->update([
             'firstName' => $request->fname,
             'lastName' => $request->lname,
             'username' => $request->username,
@@ -52,7 +52,6 @@ class ProfileController extends Controller
         ]);
 
         $request->session()->regenerate();
-        Auth::login($farmer);
         return redirect()->route('farmers.dashboard')->with('success', 'Profile updated successfully');
     }
 }

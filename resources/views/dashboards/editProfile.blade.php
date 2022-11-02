@@ -4,7 +4,7 @@
         <img class="rounded-full mx-auto h-40 w-40  shadow"
             src="https://extendedevolutionarysynthesis.com/wp-content/uploads/2018/02/avatar-1577909_960_720.png">
         <div class="my-20"></div>
-        <form method="POST" action="/register">
+        <form method="POST" action="/updateProfile">
             @csrf
             <div class="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
