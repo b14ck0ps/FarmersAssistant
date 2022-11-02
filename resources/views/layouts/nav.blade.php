@@ -11,8 +11,15 @@
                         @svg('tni-signin-o', 'w-5') sign in</a></div>
             @endguest
             @auth
-                <div><a class="flex items-center gap-2 hover:text-orange-500" href="{{ route('farmers.editProfile') }}">
-                        @svg('uiw-setting-o', 'w-5') Setting</a></div>
+                @if (route('farmers.dashboard') == url()->current())
+                    <div><a class="flex items-center gap-2 hover:text-orange-500" href="{{ route('farmers.editProfile') }}">
+                            @svg('uiw-setting-o', 'w-5') Setting</a></div>
+                @endif
+                @if (route('farmers.editProfile') == url()->current() || route('farmers.dashboard') != url()->current())
+                    <div><a class="flex items-center gap-2 hover:text-orange-500" href="{{ route('farmers.dashboard') }}">
+                            @svg('uiw-setting-o', 'w-5') Profile</a></div>
+                @endif
+
                 <div class="pr-4"><a class="flex items-center gap-2 hover:text-orange-500" href="/logout">
                         @svg('tni-signin-o', 'w-5') Log out</a></div>
             @endauth
