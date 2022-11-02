@@ -5,10 +5,14 @@
 
         <nav class="flex gap-8 p-3 justify-center">
             @guest
-                <div><a class="flex items-center gap-2 hover:text-orange-500" href="/signup">
-                        @svg('iconsax-bro-signpost', 'w-5') Register</a></div>
-                <div class="pr-4"><a class="flex items-center gap-2 hover:text-orange-500" href="/signin">
-                        @svg('tni-signin-o', 'w-5') sign in</a></div>
+                @if (url()->current() !== url('/signup'))
+                    <div><a class="flex items-center gap-2 hover:text-orange-500" href="/signup">
+                            @svg('iconsax-bro-signpost', 'w-5') Register</a></div>
+                @endif
+                @if (url()->current() !== url('/signin'))
+                    <div class="pr-4"><a class="flex items-center gap-2 hover:text-orange-500" href="/signin">
+                            @svg('tni-signin-o', 'w-5') sign in</a></div>
+                @endif
             @endguest
             @auth
                 @if (route('farmers.dashboard') == url()->current())
