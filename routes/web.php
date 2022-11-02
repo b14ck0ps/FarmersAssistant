@@ -32,6 +32,7 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'showProfile'])->name('farmers.dashboard');
     Route::get('/profile/edit', [ProfileController::class, 'showProfileEdit'])->name('farmers.editProfile');
+    Route::post('/updateProfile', [ProfileController::class, 'updateProfile'])->name('updateProfile');
 });
 //logout
 Route::get('/logout', function () {
