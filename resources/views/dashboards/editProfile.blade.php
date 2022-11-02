@@ -12,7 +12,7 @@
                         name</label>
                     <input name="fname" type="text" id="first_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5    "
-                        placeholder="John" required="" value="{{ Auth::User()->firstName }}">
+                        placeholder="John" required="" value="{{ old('fname') ?? Auth::User()->firstName }}">
                     @error('fname')
                         <p class="text-red-500 text-xs italic">{{ $message }}</p>
                     @enderror
@@ -22,7 +22,7 @@
                         name</label>
                     <input name="lname" type="text" id="last_name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5    "
-                        placeholder="Doe" required="" value="{{ Auth::User()->lastName }}">
+                        placeholder="Doe" required="" value="{{ old('lname') ?? Auth::User()->lastName }}">
                     @error('lname')
                         <p class="text-red-500 text-xs
                         italic">{{ $message }}</p>
@@ -32,7 +32,7 @@
                     <label for="username" class="block mb-2 text-sm font-medium text-gray-900 ">Username</label>
                     <input name="username" type="text" id="username"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5    "
-                        placeholder="john123" required="" value="{{ Auth::User()->username }}">
+                        placeholder="john123" required="" value="{{ old('username') ?? Auth::User()->username }}">
                     @error('username')
                         <p class="text-red-500 text-xs italic">{{ $message }}</p>
                     @enderror
@@ -42,7 +42,7 @@
                         number</label>
                     <input name="phone" type="tel" id="phone"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5    "
-                        placeholder="123-45-678" required="" value="{{ Auth::User()->phone }}">
+                        placeholder="123-45-678" required="" value="{{ old('phone') ?? Auth::User()->phone }}">
                     @error('phone')
                         <p class="text-red-500 text-xs italic">{{ $message }}</p>
                     @enderror
@@ -51,7 +51,7 @@
                     <label for="City" class="block mb-2 text-sm font-medium text-gray-900 ">City</label>
                     <input name="city" type="text" id="City"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5    "
-                        placeholder="i.e. Dhaka" required="" value="{{ Auth::User()->city }}">
+                        placeholder="i.e. Dhaka" required="" value="{{ old('city') ?? Auth::User()->city }}">
                     @error('city')
                         <p class="text-red-500 text-xs italic">{{ $message }}</p>
                     @enderror
@@ -61,7 +61,7 @@
                         Postal Code</label>
                     <input name="postCode" type="number" id="Postal Code"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5    "
-                        placeholder="1234" required="" value="{{ Auth::User()->postalCode }}">
+                        placeholder="1234" required="" value="{{ old('postCode') ?? Auth::User()->postalCode }}">
                     @error('postCode')
                         <p class="text-red-500 text-xs italic">{{ $message }}</p>
                     @enderror
@@ -78,7 +78,7 @@
                         Date Of Birth</label>
                     <input type="date" name="dob"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5    "
-                        required="" value="{{ Auth::User()->dob }}">
+                        required="" value="{{ old('dob') ?? Auth::User()->dob }}">
                     @error('dob')
                         <p class="text-red-500 text-xs italic">{{ $message }}</p>
                     @enderror
@@ -89,7 +89,8 @@
                     Address</label>
                 <input type="address" name="address"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5    "
-                    placeholder="1/3 Dhaka , Bangladesh" required="" value="{{ Auth::User()->address }}">
+                    placeholder="1/3 Dhaka , Bangladesh" required=""
+                    value="{{ old('address') ?? Auth::User()->address }}">
                 @error('address')
                     <p class="text-red-500 text-xs italic">{{ $message }}</p>
                 @enderror
@@ -99,7 +100,7 @@
                     address</label>
                 <input type="email" name="email"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5    "
-                    placeholder="john.doe@company.com" required="" value="{{ Auth::User()->email }}">
+                    placeholder="john.doe@company.com" required="" value="{{ old('email') ?? Auth::User()->email }}">
                 @error('email')
                     <p class="text-red-500 text-xs italic">{{ $message }}</p>
                 @enderror
