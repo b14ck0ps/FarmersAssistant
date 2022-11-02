@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Models\Users\Farmers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Termwind\Components\Dd;
+use Illuminate\Support\Facades\Hash;
 
 class RegistrationController extends Controller
 {
@@ -44,7 +44,7 @@ class RegistrationController extends Controller
             'dob' => $request->dob,
             'address' => $request->address,
             'email' => $request->email,
-            'password' => bcrypt($request->password),
+            'password' => Hash::make($request->password),
         ]);
         //create a instance of the farmer
         Farmers::create([
