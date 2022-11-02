@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Auth\Farmers\FarmerProfileController;
+use App\Http\Controllers\Farmers\ProfileController;
 use App\Http\Controllers\Auth\Farmers\LoginController;
 use App\Http\Controllers\Auth\Farmers\RegistrationController;
 use Illuminate\Support\Facades\Route;
@@ -30,8 +30,8 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/profile', [FarmerProfileController::class, 'showProfile'])->name('farmers.dashboard');
-    Route::get('/profile/edit', [FarmerProfileController::class, 'showProfileEdit'])->name('farmers.editProfile');
+    Route::get('/profile', [ProfileController::class, 'showProfile'])->name('farmers.dashboard');
+    Route::get('/profile/edit', [ProfileController::class, 'showProfileEdit'])->name('farmers.editProfile');
 });
 //logout
 Route::get('/logout', function () {
