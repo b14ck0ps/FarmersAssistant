@@ -4,6 +4,7 @@ use App\Http\Controllers\Farmers\ProfileController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\Farmers\RegistrationController;
 use App\Http\Controllers\Auth\Admins\RegistrationController as adminRegister;
+use App\Http\Controllers\Auth\Admins\AdminProfileController;
 use App\Http\Controllers\Auth\Admins\planCreateCotroller;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
@@ -44,8 +45,21 @@ Route::get('/profile', function () {
     return view('dashboards.admin');
 })->name('admins.dashboard');
 
-Route::get('plan_create', [planCreateCotroller::class, 'plancreate']);
+
+
+
+Route::get('plan_create', [planCreateCotroller::class, 'plancreate'])->middleware('adminupdatecheck');
 Route::post('/plan_submit', [planCreateCotroller::class, 'plansubmit']);
+
+
+
+Route::get('/adminupdate', [AdminProfileController::class, 'adminprofile']);
+Route::post('/startupdate', [AdminProfileController::class, 'goupdate']);
+
+Route::get('/backdashboard', function () {
+    return redirect('/dashboards.admin');
+});
+
 
 //logout
 Route::get('/logout', function () {

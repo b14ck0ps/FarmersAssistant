@@ -78,7 +78,7 @@ body {
     <span style="color:rgb(248, 248, 248)"><b>City</b></span> <input type="text" name="city" value="{{ Auth::user()->city}}"readonly><br><br>
     <span style="color:rgb(248, 248, 248)"><b>Zip-code</b></span> <input type="text" name="postalCode" value="{{ Auth::user()->postalCode}}"readonly><br><br>
     <button><a href="/logout">Logout</a></button>
-    <button><a href="/update">update</a></button>
+    <button><a href="/adminupdate">update</a></button>
 </div>
 
 
