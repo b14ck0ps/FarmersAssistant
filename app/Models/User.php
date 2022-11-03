@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Models\Users\Admins;
+use App\Models\Users\Advisors;
 use App\Models\Users\Farmers;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -58,9 +60,31 @@ class User extends Authenticatable
     {
         return $this->hasMany(Farmers::class);
     }
+    public function admins()
+    {
+        return $this->hasMany(Admins::class);
+    }
+    public function advisor()
+    {
+        return $this->hasMany(Advisors::class);
+    }
     //get full name
     public function getFullName()
     {
         return $this->firstName . ' ' . $this->lastName;
+    }
+
+    //get user type
+    public function getUserType()
+    {
+        if ($this->farmers()->count() > 0) {
+            return 'FARMER';
+        } elseif ($this->admins()->count() > 0) {
+            return 'ADMIN';
+        } elseif ($this->advisor()->count() > 0) {
+            return 'ADVISOR';
+        } else {
+            return 'USER';
+        }
     }
 }

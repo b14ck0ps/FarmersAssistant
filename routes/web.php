@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\Farmers\ProfileController;
-use App\Http\Controllers\Auth\Farmers\LoginController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\Farmers\RegistrationController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -39,3 +40,7 @@ Route::get('/logout', function () {
     Auth::logout();
     return redirect('/signin');
 });
+
+//test routes
+Route::get('/test', [TestController::class, 'index']);
+Route::post('/test', [TestController::class, 'test']);

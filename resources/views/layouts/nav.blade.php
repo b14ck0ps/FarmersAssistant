@@ -5,10 +5,14 @@
 
         <nav class="flex gap-8 p-3 justify-center">
             @guest
-                <div><a class="flex items-center gap-2 hover:text-orange-500" href="/signup">
-                        @svg('iconsax-bro-signpost', 'w-5') Register</a></div>
-                <div class="pr-4"><a class="flex items-center gap-2 hover:text-orange-500" href="/signin">
-                        @svg('tni-signin-o', 'w-5') sign in</a></div>
+                @if (url()->current() !== url('/signup'))
+                    <div><a class="flex items-center gap-2 hover:text-orange-500" href="/signup">
+                            @svg('iconsax-bro-signpost', 'w-5') Register</a></div>
+                @endif
+                @if (url()->current() !== url('/signin'))
+                    <div class="pr-4"><a class="flex items-center gap-2 hover:text-orange-500" href="/signin">
+                            @svg('tni-signin-o', 'w-5') sign in</a></div>
+                @endif
             @endguest
             @auth
                 @if (route('farmers.dashboard') == url()->current())
@@ -17,7 +21,7 @@
                 @endif
                 @if (route('farmers.editProfile') == url()->current() || route('farmers.dashboard') != url()->current())
                     <div><a class="flex items-center gap-2 hover:text-orange-500" href="{{ route('farmers.dashboard') }}">
-                            @svg('uiw-setting-o', 'w-5') Profile</a></div>
+                            @svg('iconoir-profile-circled', 'w-5') Profile</a></div>
                 @endif
 
                 <div class="pr-4"><a class="flex items-center gap-2 hover:text-orange-500" href="/logout">
