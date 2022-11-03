@@ -39,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/updateProfile', [ProfileController::class, 'updateProfile'])->name('updateProfile');
     Route::get('mail', [MailController::class, 'index'])->name('mail');
     Route::post('send/mail', [MailController::class, 'send'])->name('send.mail');
+    Route::get('/view/mail/{id}', [MailController::class, 'view'])->name('view.mail');
 });
 //admins route
 Route::get('admin/signup', [adminRegister::class, 'showRegistrationForm']);

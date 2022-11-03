@@ -36,4 +36,10 @@ class MailController extends Controller
         ]);
         return redirect()->back()->with('success', 'Mail sent successfully');
     }
+    public function view($id)
+    {
+        $mail = Mails::find($id);
+        $advisor = User::find(Advisors::find($mail->advisor_id)->user_id);
+        return view('mail.farmerViewMail', compact('mail', 'advisor'));
+    }
 }

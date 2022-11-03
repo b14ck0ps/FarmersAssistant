@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="text-center text-3xl m-10">
-        <h1>Farmer's Dashboard</h1>
+        {{-- <h1>Farmer's Dashboard</h1> --}}
     </div>
     <div>
         <div class="container mx-auto my-5 p-5">
@@ -94,8 +94,8 @@
 
                     <div class="mt-20"></div>
                     {{-- search email --}}
-                    <div class="">
-                        <h1 class="text-3xl text-center p-6">Feedbacks</h1>
+                    <h1 class="text-3xl text-center p-3">Inbox</h1>
+                    <div class="p-10">
                         <div class="mb-3 w-96 md:w-auto">
                             <div class="input-group relative flex flex-row gap-5 items-center w-full mb-4">
                                 <input type="search"
@@ -135,13 +135,15 @@
                                                 <tr class="border-b">
                                                     <td
                                                         class="px-6 py-4 whitespace-nowrap text-sm font-medium text-blue-300 underline ">
-                                                        <a class="hover:text-blue-500" href="/view/{{ $mail->id }}">
+                                                        <a class="hover:text-blue-500"
+                                                            href="/view/mail/{{ $mail->id }}">
                                                             {{ $mail->id }}
                                                         </a>
                                                     </td>
                                                     <td
                                                         class="text-sm font-light px-6 py-4 whitespace-nowrap text-blue-300">
-                                                        <a class="hover:text-blue-500" href="/view/{{ $mail->id }}">
+                                                        <a class="hover:text-blue-500"
+                                                            href="/view/mail/{{ $mail->id }}">
                                                             {{ $mail->subject }}
                                                         </a>
                                                     </td>
