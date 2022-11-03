@@ -56,8 +56,3 @@ Route::get('/logout', function () {
 //test routes
 Route::get('/test', [TestController::class, 'index']);
 Route::post('/test', [TestController::class, 'test']);
-
-Route::get('/logout', function () {
-    session()->forget('user');
-    return redirect('login');
-});
