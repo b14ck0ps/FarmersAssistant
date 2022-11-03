@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mails;
 use App\Models\User;
-use App\Models\Users\Advisors;
+use App\Models\Mails;
 use Illuminate\Http\Request;
+use App\Models\Users\Advisors;
+use Illuminate\Support\Facades\Auth;
 
 class MailController extends Controller
 {
@@ -21,7 +22,6 @@ class MailController extends Controller
     }
     public function send(Request $request)
     {
-        //dd($request->all(), auth()->user()->id);
         $this->validate($request, [
             'subject' => 'required | string | max:100',
             'body' => 'required | string | max:1000',
@@ -32,7 +32,7 @@ class MailController extends Controller
             'subject' => $request->subject,
             'body' => $request->body,
             'advisor_id' => $request->advisor_id,
-            'farmer_id' => auth()->user()->id,
+            'farmer_id' => session('user_id'),
         ]);
         return redirect()->back()->with('success', 'Mail sent successfully');
     }
