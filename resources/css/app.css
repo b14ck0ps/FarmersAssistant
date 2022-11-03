@@ -9,6 +9,6 @@
     }
     input,
     textarea {
-        @apply bg-gray-800 text-gray-900;
+        @apply bg-gray-800 text-white;
     }
 }
