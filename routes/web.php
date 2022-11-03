@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Farmers\ProfileController;
-use App\Http\Controllers\Auth\Farmers\LoginController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\Farmers\RegistrationController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;

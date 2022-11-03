@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Auth\Farmers;
+namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Users\Farmers;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -14,7 +13,7 @@ class LoginController extends Controller
     {
         return view('auth.signin');
     }
-    // farmer login
+    // global login
     public function login(Request $request)
     {
         $request->validate([
@@ -28,9 +27,17 @@ class LoginController extends Controller
                 'email' => 'The provided credentials do not match our records.',
             ])->onlyInput('email');
         } else {
-            if (Farmers::where('user_id', Auth::user()->id)->first()) {
+            if (Auth::user()->getUserType() == 'FARMER') {
                 $request->session()->regenerate();
                 return redirect()->intended(route('farmers.dashboard'));
+            } else if (Auth::user()->getUserType() == 'ADVISOR') {
+                dd("advisor dashboard");
+                //$request->session()->regenerate();
+                //return redirect()->intended(route('advisors.dashboard'));
+            } else {
+                dd("admin dashboard");
+                //$request->session()->regenerate();
+                //return redirect()->intended(route('admins.dashboard'));
             }
             return back()->withErrors([
                 'email' => 'The provided credentials do not match our records.',
