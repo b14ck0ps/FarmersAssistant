@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Farmers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Mails;
+use App\Models\Users\Advisors;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -13,7 +15,12 @@ class ProfileController extends Controller
 
     public function showProfile()
     {
-        return view('dashboards.farmers');
+        $mails = Mails::where('farmer_id', session('user_id'))->get();
+        $mails->map(function ($mail) {
+            $mail->advisor_name = User::find(Advisors::find($mail->advisor_id)->first()->user_id)->getFullName();
+            return $mail;
+        });
+        return view('dashboards.farmers', compact('mails'));
     }
 
     public function showProfileEdit()

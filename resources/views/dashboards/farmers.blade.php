@@ -109,7 +109,6 @@
                     </div>
                     {{-- end search email --}}
                     <!-- Inbox -->
-                    <!-- Dummy DATA For Now -->
                     <div class="flex flex-col">
                         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
                             <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -121,56 +120,39 @@
                                                     #
                                                 </th>
                                                 <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
-                                                    First
+                                                    Subject
                                                 </th>
                                                 <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
-                                                    Last
+                                                    Advisor
                                                 </th>
                                                 <th scope="col" class="text-sm font-medium px-6 py-4 text-left">
-                                                    Handle
+                                                    Date
                                                 </th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr class="border-b">
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium ">1
-                                                </td>
-                                                <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
-                                                    Mark
-                                                </td>
-                                                <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
-                                                    Otto
-                                                </td>
-                                                <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
-                                                    @mdo
-                                                </td>
-                                            </tr>
-                                            <tr class=" border-b">
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium ">2
-                                                </td>
-                                                <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
-                                                    Jacob
-                                                </td>
-                                                <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
-                                                    Thornton
-                                                </td>
-                                                <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
-                                                    @fat
-                                                </td>
-                                            </tr>
-                                            <tr class=" border-b">
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium ">3
-                                                </td>
-                                                <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
-                                                    Larry
-                                                </td>
-                                                <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
-                                                    Wild
-                                                </td>
-                                                <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
-                                                    @twitter
-                                                </td>
-                                            </tr>
+                                            @foreach ($mails as $mail)
+                                                <tr class="border-b">
+                                                    <td
+                                                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-blue-300 underline ">
+                                                        <a class="hover:text-blue-500" href="/view/{{ $mail->id }}">
+                                                            {{ $mail->id }}
+                                                        </a>
+                                                    </td>
+                                                    <td
+                                                        class="text-sm font-light px-6 py-4 whitespace-nowrap text-blue-300">
+                                                        <a class="hover:text-blue-500" href="/view/{{ $mail->id }}">
+                                                            {{ $mail->subject }}
+                                                        </a>
+                                                    </td>
+                                                    <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
+                                                        {{ $mail->advisor_name }}
+                                                    </td>
+                                                    <td class="text-sm font-light px-6 py-4 whitespace-nowrap">
+                                                        {{ $mail->created_at }}
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
