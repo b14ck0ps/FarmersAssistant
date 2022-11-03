@@ -23,6 +23,10 @@
                     <div><a class="flex items-center gap-2 hover:text-orange-500" href="{{ route('farmers.dashboard') }}">
                             @svg('iconoir-profile-circled', 'w-5') Profile</a></div>
                 @endif
+                @if (route('mail') != url()->current())
+                    <div><a class="flex items-center gap-2 hover:text-orange-500" href="{{ route('mail') }}">
+                            @svg('css-mail', 'w-5') Mail</a></div>
+                @endif
 
                 <div class="pr-4"><a class="flex items-center gap-2 hover:text-orange-500" href="/logout">
                         @svg('tni-signin-o', 'w-5') Log out</a></div>
