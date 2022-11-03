@@ -4,6 +4,8 @@ use App\Http\Controllers\Farmers\ProfileController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\Farmers\RegistrationController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\Auth\Admins\RegistrationController as adminRegister;
+use App\Http\Controllers\Auth\Admins\planCreateCotroller;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -38,6 +40,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('mail', [MailController::class, 'index'])->name('mail');
     Route::post('send/mail', [MailController::class, 'send'])->name('send.mail');
 });
+//admins route
+Route::get('admin/signup', [adminRegister::class, 'showRegistrationForm']);
+Route::post('admin/register', [adminRegister::class, 'register'])->name('admin.register');
+Route::get('/profile', function () {
+    return view('dashboards.admin');
+})->name('admins.dashboard');
+
+Route::get('plan_create', [planCreateCotroller::class, 'plancreate']);
+Route::post('/plan_submit', [planCreateCotroller::class, 'plansubmit']);
+
 //logout
 Route::get('/logout', function () {
     Auth::logout();
@@ -47,3 +59,8 @@ Route::get('/logout', function () {
 //test routes
 Route::get('/test', [TestController::class, 'index']);
 Route::post('/test', [TestController::class, 'test']);
+
+Route::get('/logout', function () {
+    session()->forget('user');
+    return redirect('login');
+});
