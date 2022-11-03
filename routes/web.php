@@ -40,7 +40,7 @@ Route::middleware(['auth'])->group(function () {
 //admins route
 Route::get('admin/signup', [adminRegister::class, 'showRegistrationForm']);
 Route::post('admin/register', [adminRegister::class, 'register'])->name('admin.register');
-Route::get('/profile', function () {
+Route::get('admin/profile', function () {
     return view('dashboards.admin');
 })->name('admins.dashboard');
 
