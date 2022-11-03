@@ -43,7 +43,7 @@ Route::middleware(['auth'])->group(function () {
 //admins route
 Route::get('admin/signup', [adminRegister::class, 'showRegistrationForm']);
 Route::post('admin/register', [adminRegister::class, 'register'])->name('admin.register');
-Route::get('/profile', function () {
+Route::get('admin/profile', function () {
     return view('dashboards.admin');
 })->name('admins.dashboard');
 
@@ -59,8 +59,3 @@ Route::get('/logout', function () {
 //test routes
 Route::get('/test', [TestController::class, 'index']);
 Route::post('/test', [TestController::class, 'test']);
-
-Route::get('/logout', function () {
-    session()->forget('user');
-    return redirect('login');
-});
