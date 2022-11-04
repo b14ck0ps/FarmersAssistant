@@ -20,12 +20,12 @@ class planCreateCotroller extends Controller
     {
         $usetable = new Plan();
         $usetable->planName = $request->planName;
-        $usetable->admin_id = $request->admin_id;
+        $usetable->admin_id = session('user_id');
         $usetable->description = $request->description;
         $usetable->price = $request->price;
         $usetable->orderDiscount = $request->orderDiscount;
         $usetable->save();
 
-         echo "fsdgsdgs";
+         echo ".......Your plan create successfully......";
     }
 }
