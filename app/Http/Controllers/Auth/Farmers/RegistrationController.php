@@ -54,7 +54,8 @@ class RegistrationController extends Controller
         $farmer = User::find($farmer->id);
         // Log the farmer in
         Auth::login($farmer);
-
+        session(['user_type' => Auth::user()->getUserType()]);
+        session(['user_id' => User::find(Auth::id())->farmers->first()->id]);
         // Redirect to the farmer dashboard
         //get all farmers info
         return redirect()->intended(route('farmers.dashboard'));
