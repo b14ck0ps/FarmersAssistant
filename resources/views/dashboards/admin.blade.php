@@ -71,9 +71,9 @@ padding-top: 80px;
     <ul>
         <li><a href="#news"class="active">Taskbar</a></li>
         <li><a href="#">News</a></li>
-        <li><a href="plan_create">Plan Create</a></li>
+        <li><a href="/plan_create">Plan Create</a></li>
         <li><a href="#">See All Plans</a></li>
-        <li><a href="#">Create Product List</a></li>
+        <li><a href="/product_create">Create Product List</a></li>
         <li><a href="#">Delete Product List</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
@@ -92,9 +92,9 @@ padding-top: 80px;
 </div>
 
 <div class="button">
-    <button ><a href="/adminlogout">Logout</a></button>
+    <button ><a href="/logout">Logout</a></button>
 </div>
-
+<button><a href="product_create">Create Product List</a></button>
 </body>
 </html>
 

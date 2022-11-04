@@ -31,6 +31,6 @@ class AdminProfileController extends Controller
         $use_table->save();
         $request->session()->put('user', $use_table);
         //echo "sdfsxc";
-         return view("dashboards.admin");
+         return redirect('/admin/profile');
         }
 }

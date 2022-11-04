@@ -45,9 +45,9 @@ body {
     <span style="color:rgb(248, 248, 248)"><b>Address</b></span> <input type="text" name="address" value="{{ Auth::user()->address}}"><br><br>
     <span style="color:rgb(248, 248, 248)"><b>Phone</b></span> <input type="text" name="phone" value="{{ Auth::user()->phone}}"><br><br>
     <button type="submit" style="color: #032160">Submit</a></button>
-    <button href="/backdashboard">Back to Dashboard</button>
+    <button><a href="/admin/profile">Back to Dashboard</a></button>
 </div>
-
 
 </body>
 </html>
+
