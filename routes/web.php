@@ -66,8 +66,8 @@ Route::get('/backdashboard', function () {
 
 
 //logout
-Route::post('/adminlogout', function () {
-    Auth::login();
+Route::get('/logout', function () {
+    Auth::logout();
     return redirect('/signin');
 });
 
