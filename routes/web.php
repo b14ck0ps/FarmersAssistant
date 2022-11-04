@@ -57,21 +57,21 @@ Route::get('/adminupdate', [AdminProfileController::class, 'adminprofile']);
 Route::post('/startupdate', [AdminProfileController::class, 'goupdate']);
 
 Route::get('/backdashboard', function () {
-    return redirect('/dashboards.admin');
+    return redirect('/welcome');
 });
 
 
 //logout
-Route::get('/logout', function () {
-    Auth::logout();
-    return redirect('/signin');
+Route::post('/adminlogout', function () {
+    session()->forget('user');
+    return redirect('/auth.signin');
 });
 
 //test routes
 Route::get('/test', [TestController::class, 'index']);
 Route::post('/test', [TestController::class, 'test']);
 
-Route::get('/logout', function () {
-    session()->forget('user');
-    return redirect('login');
-});
+// Route::get('/logout', function () {
+//     session()->forget('user');
+//     return redirect('login');
+// });

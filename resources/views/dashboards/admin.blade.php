@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,32 +22,43 @@ h2 {
     text-align: center;
   }
 
-ul {
+  ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  width: 200px;
-  background-color: #f1f1f1;
+  overflow: hidden;
+  background-color: rgb(152, 70, 70);
+}
+
+li {
+  float: left;
 }
 
 li a {
   display: block;
-  color: #000;
-  padding: 8px 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
   text-decoration: none;
 }
 
-li a.active {
-  background-color: #04aa33;
-  color: white;
+li a:hover:not(.active) {
+  background-color: #111;
 }
 
-li a:hover:not(.active) {
-  background-color: rgb(19, 1, 1);
-  color: white;
+.active {
+  background-color: #04AA6D;
 }
 body {
   background-color: #333396;
+}
+
+.button{
+    text-align: center;
+width: 1400px;
+height: 500px;
+padding-top: 80px;
+
 }
 
 </style>
@@ -59,15 +69,15 @@ body {
     <h4 style="border: 2px solid rgb(0, 187, 255)"></h4>
     <p style="color: #f1f1f1">Welcome {{ Auth::user()->getFullName() }}</p>
     <ul>
-        <li><a href="#news"class="active">Work</a></li>
+        <li><a href="#news"class="active">Taskbar</a></li>
         <li><a href="#">News</a></li>
         <li><a href="plan_create">Plan Create</a></li>
         <li><a href="#">See All Plans</a></li>
         <li><a href="#">Create Product List</a></li>
         <li><a href="#">Delete Product List</a></li>
         <li><a href="#">Contact</a></li>
-        <li><a href="/logout">Logout</a></li>
       </ul>
+      <br><br>
 
     <div class="center">
     <span style="color:rgb(248, 248, 248)" style="text-align: center"><b>Profile</b></span><br>
@@ -77,10 +87,13 @@ body {
     <span style="color:rgb(248, 248, 248)"><b>Gender</b></span> <input type="text" name="gender" value="{{ Auth::user()->gender}}"readonly><br><br>
     <span style="color:rgb(248, 248, 248)"><b>City</b></span> <input type="text" name="city" value="{{ Auth::user()->city}}"readonly><br><br>
     <span style="color:rgb(248, 248, 248)"><b>Zip-code</b></span> <input type="text" name="postalCode" value="{{ Auth::user()->postalCode}}"readonly><br><br>
-    <button><a href="/logout">Logout</a></button>
+
     <button><a href="/adminupdate">update</a></button>
 </div>
 
+<div class="button">
+    <button ><a href="/adminlogout">Logout</a></button>
+</div>
 
 </body>
 </html>
