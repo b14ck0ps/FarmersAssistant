@@ -26,7 +26,6 @@ class planCreateCotroller extends Controller
         $usetable->orderDiscount = $request->orderDiscount;
         $usetable->save();
 
-         dd("created");
-
+         echo "fsdgsdgs";
     }
 }
