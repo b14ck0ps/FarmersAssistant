@@ -7,6 +7,7 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\Auth\Admins\RegistrationController as adminRegister;
 use App\Http\Controllers\Auth\Admins\AdminProfileController;
 use App\Http\Controllers\Auth\Admins\planCreateCotroller;
+use App\Http\Controllers\Auth\Admins\productsCreateController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -60,8 +61,13 @@ Route::post('/plan_submit', [planCreateCotroller::class, 'plansubmit']);
 Route::get('/adminupdate', [AdminProfileController::class, 'adminprofile']);
 Route::post('/startupdate', [AdminProfileController::class, 'goupdate']);
 
-Route::get('/backdashboard', function () {
-    return redirect('/welcome');
+
+Route::get('product_create', [productsCreateController::class, 'productcreate']);
+Route::post('/productsubmit', [productsCreateController::class, 'productsubmit']);
+
+
+Route::get('backtodashboard', function () {
+    return view('admin/profile');
 });
 
 
