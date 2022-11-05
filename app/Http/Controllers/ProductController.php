@@ -17,7 +17,6 @@ class ProductController extends Controller
     public function addCart($id)
     {
         $total_quantity = session()->get('total_quantity');
-        $total_price = session()->get('total_price');
         if ($total_quantity) {
             session()->put('total_quantity', $total_quantity + 1);
         } else {
@@ -74,5 +73,17 @@ class ProductController extends Controller
             $total_net_price += $item['total_price'];
         }
         return view('dashboards.cart', compact('cart', 'total_net_price'));
+    }
+    //remove cart
+    public function deleteCart($id)
+    {
+        $cart = session()->get('cart');
+        if (isset($cart[$id])) {
+            unset($cart[$id]);
+            session()->put('cart', $cart);
+            $total_quantity = session()->get('total_quantity');
+            session()->put('total_quantity', $total_quantity - 1);
+        }
+        return redirect()->back()->with('success', 'Product removed successfully');
     }
 }
