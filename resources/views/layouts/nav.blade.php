@@ -23,7 +23,7 @@
                     </svg>
                     Cart
                 </a>
-                @if (session()->has('total_quantity'))
+                @if (session()->has('total_quantity') && session()->get('total_quantity') > 0)
                     <span class="text-white bg-red-500 rounded-full px-2 py-1 text-xs">
                         {{ session()->get('total_quantity') }}
                     </span>

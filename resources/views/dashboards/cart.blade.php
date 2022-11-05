@@ -23,30 +23,38 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($cart as $item)
-                        <tr class="border-b border-gray-700 text-white">
-                            <td class="py-3 px-6 font-semibold">
-                                {{ $item['title'] }}
-                            </td>
-                            <td class="py-3 px-6">
-                                {{ $item['quantity'] }}
-                            </td>
-                            <td class="py-3 px-6">
-                                ৳ {{ $item['price'] }}
-                            </td>
-                            <td class="py-3 px-6">
-                                ৳ {{ $item['total_price'] }}
-                            </td>
-                            <td class="py-3 px-6">
-                                <form action="{{ route('delete.cart', $item['id']) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit"
-                                        class=" font-semibold text-red-900 hover:text-red-600">Remove</button>
-                                </form>
+                    @if (session()->get('total_quantity') === 0)
+                        <tr>
+                            <td colspan="5" class="text-center py-3">
+                                <h1 class="text-2xl">Cart is empty</h1>
                             </td>
                         </tr>
-                    @endforeach
+                    @else
+                        @foreach ($cart as $item)
+                            <tr class="border-b border-gray-700 text-white">
+                                <td class="py-3 px-6 font-semibold">
+                                    {{ $item['title'] }}
+                                </td>
+                                <td class="py-3 px-6">
+                                    {{ $item['quantity'] }}
+                                </td>
+                                <td class="py-3 px-6">
+                                    ৳ {{ $item['price'] }}
+                                </td>
+                                <td class="py-3 px-6">
+                                    ৳ {{ $item['total_price'] }}
+                                </td>
+                                <td class="py-3 px-6">
+                                    <form action="{{ route('delete.cart', $item['id']) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class=" font-semibold text-red-900 hover:text-red-600">Remove</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
                 </tbody>
             </table>
         </div>
