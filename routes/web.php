@@ -79,3 +79,6 @@ Route::get('/logout', function () {
 //test routes
 Route::get('/test', [TestController::class, 'index']);
 Route::post('/test', [TestController::class, 'test']);
+
+//Cart routes
+Route::get('/cart/{id}', [ProductController::class, 'addCart'])->name('cart.add');
