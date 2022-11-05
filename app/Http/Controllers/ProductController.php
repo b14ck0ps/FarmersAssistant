@@ -59,4 +59,10 @@ class ProductController extends Controller
         session()->put('cart', $cart);
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
+    //cart
+    public function cart()
+    {
+        $cart = session()->get('cart');
+        return view('dashboards.cart', compact('cart'));
+    }
 }

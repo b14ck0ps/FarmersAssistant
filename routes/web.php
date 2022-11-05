@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('mail', [MailController::class, 'index'])->name('mail');
     Route::post('send/mail', [MailController::class, 'send'])->name('send.mail');
     Route::get('/view/mail/{id}', [MailController::class, 'view'])->name('view.mail');
+    Route::get('/cart', [ProductController::class, 'cart'])->name('cart');
 });
 //admins route
 Route::get('admin/signup', [adminRegister::class, 'showRegistrationForm']);
