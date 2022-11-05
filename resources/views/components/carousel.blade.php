@@ -9,7 +9,7 @@
                 checked="checked">
             <div class="carousel-item absolute opacity-0" style="height:28vh;">
                 <div class="block h-full w-full  ">
-                    <img src="https://source.unsplash.com/random/1920x400?farmer" alt="">
+                    <img src="{{ URL::asset('/carousel') }}/farmer.jpg" alt="">
                 </div>
             </div>
             <label for="carousel-3"
@@ -22,7 +22,7 @@
                 hidden="">
             <div class="carousel-item absolute opacity-0" style="height:28vh;">
                 <div class="block h-full w-full">
-                    <img src="https://source.unsplash.com/random/1920x400?fisherman" alt="">
+                    <img src="{{ URL::asset('/carousel') }}/fisherman.jpg" alt="">
                 </div>
             </div>
             <label for="carousel-1"
@@ -34,8 +34,8 @@
             <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true"
                 hidden="">
             <div class="carousel-item absolute opacity-0" style="height:28vh;">
-                <div class="block h-full w-full  "> <img src="https://source.unsplash.com/random/1920x400?crops"
-                        alt=""></div>
+                <div class="block h-full w-full  "> <img src="{{ URL::asset('/carousel') }}/crops.jpg" alt="">
+                </div>
             </div>
             <label for="carousel-2"
                 class="prev control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full  hover:bg-gray-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
