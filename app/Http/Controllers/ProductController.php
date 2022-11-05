@@ -17,6 +17,7 @@ class ProductController extends Controller
     public function addCart($id)
     {
         $total_quantity = session()->get('total_quantity');
+        $total_price = session()->get('total_price');
         if ($total_quantity) {
             session()->put('total_quantity', $total_quantity + 1);
         } else {
@@ -31,10 +32,12 @@ class ProductController extends Controller
         if (!$cart) {
             $cart = [
                 $id => [
+                    "id" => $product->id,
                     "title" => $product->title,
                     "quantity" => 1,
                     "price" => $product->price,
-                    "photo" => $product->image
+                    "photo" => $product->image,
+                    "total_price" => $product->price
                 ]
             ];
             $total_quantity++;
@@ -45,15 +48,18 @@ class ProductController extends Controller
         if (isset($cart[$id])) {
             $cart[$id]['quantity']++;
             $total_quantity++;
+            $cart[$id]['total_price'] = $cart[$id]['quantity'] * $cart[$id]['price'];
             session()->put('cart', $cart);
             return redirect()->back()->with('success', 'Product added to cart successfully!');
         }
         // if item not exist in cart then add to cart with quantity = 1
         $cart[$id] = [
+            "id" => $product->id,
             "title" => $product->title,
             "quantity" => 1,
             "price" => $product->price,
-            "photo" => $product->image
+            "photo" => $product->image,
+            "total_price" => $product->price
         ];
         $total_quantity++;
         session()->put('cart', $cart);
@@ -63,6 +69,10 @@ class ProductController extends Controller
     public function cart()
     {
         $cart = session()->get('cart');
-        return view('dashboards.cart', compact('cart'));
+        $total_net_price = 0;
+        foreach (session()->get('cart') as $item) {
+            $total_net_price += $item['total_price'];
+        }
+        return view('dashboards.cart', compact('cart', 'total_net_price'));
     }
 }
