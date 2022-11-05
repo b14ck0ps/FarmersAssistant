@@ -25,13 +25,30 @@
 
     <!-- Products Card-->
     <div class="flex flex-wrap mx-10 items-center justify-center">
-        <x-product-card />
-        <x-product-card />
-        <x-product-card />
-        <x-product-card />
-        <x-product-card />
-        <x-product-card />
-        <x-product-card />
-        <x-product-card />
+        @foreach ($products as $product)
+            <div class="w-60 max-w-sm rounded-lg shadow-md bg-gray-900 border-gray-700 m-10" id="{{ $product->id }}">
+                <a href="#">
+                    <img class="p-8 rounded-t-lg" src="{{ URL::asset('/uploads/product') }}/{{ $product->image }}"
+                        alt="product image">
+                </a>
+                <div class="px-3 pb-5">
+                    <div class="flex justify-between">
+                        <a href="#">
+                            <h5 class="font-bold tracking-tight truncate">{{ $product->title }}</h5>
+                        </a>
+                        <p class="text-xs">Sotck: {{ $product->quantity }}</p>
+                    </div>
+                    <div class="my-2 truncate">
+                        <p>{{ $product->description }}</p>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold  ">৳ {{ $product->price }}</span>
+                        <a href="#"
+                            class=" focus:ring-4 focus:outline-none  font-medium rounded-lg text-sm px-3 py-2 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">Add
+                            to cart</a>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
 @endsection

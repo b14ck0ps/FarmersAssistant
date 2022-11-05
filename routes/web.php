@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\Admins\RegistrationController as adminRegister;
 use App\Http\Controllers\Auth\Admins\AdminProfileController;
 use App\Http\Controllers\Auth\Admins\planCreateCotroller;
 use App\Http\Controllers\Auth\Admins\productsCreateController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -24,9 +25,7 @@ use Illuminate\Support\Facades\Auth;
 
 //* get routes
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ProductController::class, 'index'])->name('home');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/signup', [RegistrationController::class, 'showRegistrationForm']);
