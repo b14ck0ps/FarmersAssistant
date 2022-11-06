@@ -59,9 +59,13 @@
             </table>
         </div>
         <div class="bg-gray-700 p-4 mt-5">
-            <div class="flex justify-center">
+            <div class="flex justify-end gap-[85px]">
                 <div class="text-white font-semibold">
                     Total Price : ৳ {{ $total_net_price }} BDT
+                </div>
+                <div class="">
+                    <a href="{{ route('checkout') }}"
+                        class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded">Checkout</a>
                 </div>
             </div>
         </div>

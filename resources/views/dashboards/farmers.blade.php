@@ -5,6 +5,13 @@
     </div>
     <div>
         <div class="container mx-auto my-5 p-5">
+            @if (session()->has('success'))
+                <div class="bg-green-100 border border-green-400 text-green-700 text-center px-4 py-3 rounded relative w-[600px] m-auto mb-10"
+                    role="alert">
+                    <strong class="font-bold">Success!</strong>
+                    <span class="block sm:inline">{{ session()->get('success') }}</span>
+                </div>
+            @endif
             <div class="md:flex no-wrap md:-mx-2 ">
                 <!-- Left Side -->
                 <div class="w-full md:w-3/12 md:mx-2">
