@@ -35,7 +35,7 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/login', [LoginController::class, 'login']);
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'farmer'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'showProfile'])->name('farmers.dashboard');
     Route::get('/profile/edit', [ProfileController::class, 'showProfileEdit'])->name('farmers.editProfile');
     Route::post('/updateProfile', [ProfileController::class, 'updateProfile'])->name('updateProfile');
