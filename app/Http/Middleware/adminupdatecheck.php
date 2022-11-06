@@ -16,7 +16,7 @@ class adminupdatecheck
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!session()->has('user')) {
+        if (session()->has('id')) {
             return redirect()->to('dashboards.admin');
         }
         return $next($request);

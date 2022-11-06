@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\Admins\AdminProfileController;
 use App\Http\Controllers\Auth\Admins\planCreateCotroller;
 use App\Http\Controllers\Auth\Admins\productsCreateController;
 use App\Http\Controllers\TestController;
+use Doctrine\DBAL\Driver\Middleware;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -53,18 +54,26 @@ Route::get('admin/profile', function () {
 
 
 
-Route::get('plan_create', [planCreateCotroller::class, 'plancreate'])->middleware('adminupdatecheck');
+Route::get('plan_create', [planCreateCotroller::class, 'plancreate']);
 Route::post('/plan_submit', [planCreateCotroller::class, 'plansubmit']);
 
 
 
 Route::get('/adminupdate', [AdminProfileController::class, 'adminprofile']);
-Route::post('/startupdate', [AdminProfileController::class, 'goupdate']);
+Route::post('/startupdate', [AdminProfileController::class, 'goupdate'])->middleware('adminupdatecheck');
 
 
 Route::get('product_create', [productsCreateController::class, 'productcreate']);
 Route::post('/productsubmit', [productsCreateController::class, 'productsubmit']);
 
+//see all plans
+Route::get('allplan', [planCreateCotroller::class, 'getall']);
+
+//update plans
+Route::get('updateplan/{id}', [planCreateCotroller::class, 'updateplan']);
+Route::post('updateplansubmit', [planCreateCotroller::class, 'goplanupdate']);
+//delete plans
+Route::get('deleteplan/{id}', [planCreateCotroller::class, 'plandelete']);
 
 Route::get('backtodashboard', function () {
     return view('admin/profile');

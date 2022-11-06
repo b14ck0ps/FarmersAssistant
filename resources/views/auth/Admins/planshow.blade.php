@@ -21,7 +21,7 @@
 <h1 style="color: white">Create a plan</h1>
 <form action="/plan_submit" method="post">
 @csrf
-<span style="color:rgb(248, 248, 248)"><b>Admin id</b></span> <input type="hidden" name="admin_id" value="{{ auth()->user()->id }}"readonly><br><br>
+<span style="color:rgb(248, 248, 248)"><b></b></span> <input type="hidden" name="admin_id" value="{{ auth()->user()->id }}"readonly><br><br>
 
 <span style="color: white"><b>Plan Name</b></span> <input type="text" name="planName"><br><br>
 
@@ -37,7 +37,7 @@
 <br><br>
 
 <button type="submit" class="">Submit</button>
-
+<button type="submit" class=""><a href="/admin/profile">Back to dashboard</a></button>
 </form>
 </div>
 </body>
