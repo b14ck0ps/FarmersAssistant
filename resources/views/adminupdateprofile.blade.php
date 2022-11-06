@@ -36,7 +36,7 @@ body {
     <span style="color:rgb(248, 248, 248)"><b>firstName</b></span> <input type="text" name="firstName" value="{{ Auth::user()->firstName}}"><br><br>
     <span style="color:rgb(248, 248, 248)"><b>lastName</b></span> <input type="text" name="lastName" value="{{ Auth::user()->lastName}}"><br><br>
     <span style="color:rgb(248, 248, 248)"><b>UserName</b></span> <input type="text" name="username" value="{{ Auth::user()->username}}"><br><br>
-    <span style="color:rgb(248, 248, 248)"><b>Email</b></span> <input type="text" name="email" value="{{ Auth::user()->email}}"readonly><br><br>
+    <span style="color:rgb(248, 248, 248)"><b>Email</b></span> <input type="text" name="email" value="{{ Auth::user()->email}}"><br><br>
     <span style="color:rgb(248, 248, 248)"><b>Password</b></span> <input type="text" name="password" value="{{ Auth::user()->password}}"><br><br>
     <span style="color:rgb(248, 248, 248)"><b>Dob</b></span> <input type="text" name="dob" value="{{ Auth::user()->dob}}"><br><br>
     <span style="color:rgb(248, 248, 248)"><b>Gender</b></span> <input type="text" name="gender" value="{{ Auth::user()->gender}}"><br><br>
