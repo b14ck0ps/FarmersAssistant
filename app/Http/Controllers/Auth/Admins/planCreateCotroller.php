@@ -25,7 +25,44 @@ class planCreateCotroller extends Controller
         $usetable->price = $request->price;
         $usetable->orderDiscount = $request->orderDiscount;
         $usetable->save();
+        return redirect('allplan');
 
-         echo ".......Your plan create successfully......";
     }
+    public function getall()
+    {
+        $usetable=Plan::all()->toArray();
+        return view('seeplan',compact('usetable'));
+    }
+
+    public function updateplan(Request $request)
+    {
+        $usetable=Plan::where('id',$request->id)->get();
+        // echo $usetable;
+        return view('updateplanshow')->with('usetable',$usetable);
+
+
+    }
+    public function goplanupdate(Request $request)
+    {
+        $use_table=Plan::where('id',$request->id)->first();
+        $use_table->planName = $request->planName;
+        $use_table->description = $request->description;
+        $use_table->price = $request->price;
+        $use_table->orderDiscount = $request->orderDiscount;
+        $use_table->save();
+        return redirect('allplan');
+
+        }
+
+        public function plandelete(Request $request)
+        {
+            $use_table=Plan::where('id',$request->id)->first();
+            $use_table->delete();
+            return redirect('allplan');
+
+
+        }
+
+
+
 }
