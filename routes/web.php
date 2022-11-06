@@ -46,6 +46,7 @@ Route::middleware(['auth', 'farmer'])->group(function () {
     Route::get('/cart', [ProductController::class, 'cart'])->name('cart');
     Route::delete('/delete-cart/{id}', [ProductController::class, 'deleteCart'])->name('delete.cart');
     Route::get('/checkout', [CheckoutController::class, 'store'])->name('checkout');
+    Route::post('/search/mail', [MailController::class, 'searchMails'])->name('search.mail');
 });
 //admins route
 Route::get('admin/signup', [adminRegister::class, 'showRegistrationForm']);

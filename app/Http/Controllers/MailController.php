@@ -42,4 +42,18 @@ class MailController extends Controller
         $advisor = User::find(Advisors::find($mail->advisor_id)->user_id);
         return view('mail.farmerViewMail', compact('mail', 'advisor'));
     }
+    //search email by subject
+    public function searchMails(Request $request)
+    {
+        $this->validate($request, [
+            'search' => 'required | string | max:100',
+        ]);
+        $mails_serarched = Mails::where('subject', 'like', '%' . $request->search . '%')->where('farmer_id', session('user_id'))->get();
+        $mails_serarched->map(function ($mail) {
+            $mail->advisor_name = User::find(Advisors::find($mail->advisor_id)->first()->user_id)->getFullName();
+            return $mail;
+        });
+        $request->session()->put('user_mails', $mails_serarched);
+        return redirect()->back();
+    }
 }

@@ -124,18 +124,22 @@
                     <div class="mt-20"></div>
                     {{-- search email --}}
                     <h1 class="text-3xl text-center p-3">Inbox</h1>
-                    <div class="p-10">
-                        <div class="mb-3 w-96 md:w-auto">
-                            <div class="input-group relative flex flex-row gap-5 items-center w-full mb-4">
-                                <input type="search"
-                                    class="form-control bg-gray-800 relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal bg-clip-padding border border-solid rounded transition ease-in-out m-0 focus:border-blue-600 focus:outline-none"
-                                    placeholder="Search" aria-label="Search" aria-describedby="button-addon3">
-                                <button
-                                    class="btn px-6 py-2 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded hover:bg-gray-500 hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
-                                    type="button" id="button-addon3">Search</button>
+                    <form action="{{ route('search.mail') }}" method="POST">
+                        @csrf
+                        <div class="p-10">
+                            <div class="mb-3 w-96 md:w-auto">
+                                <div class="input-group relative flex flex-row gap-5 items-center w-full mb-4">
+                                    <input type="search" name="search" id="search"
+                                        class="form-control bg-gray-800 relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal bg-clip-padding border border-solid rounded transition ease-in-out m-0 focus:border-blue-600 focus:outline-none"
+                                        placeholder="Search by subject" aria-label="Search"
+                                        aria-describedby="button-addon3">
+                                    <button
+                                        class="btn px-6 py-2 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded hover:bg-gray-500 hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                                        type="submit" id="button-addon3">Search</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                     {{-- end search email --}}
                     <!-- Inbox -->
                     <div class="flex flex-col">
@@ -160,6 +164,11 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @php
+                                                if (session('user_mails')) {
+                                                    $mails = session('user_mails');
+                                                }
+                                            @endphp
                                             @foreach ($mails as $mail)
                                                 <tr class="border-b">
                                                     <td
@@ -184,6 +193,11 @@
                                                     </td>
                                                 </tr>
                                             @endforeach
+                                            @php
+                                                if ($mails = session('user_mails')) {
+                                                    session()->forget('user_mails');
+                                                }
+                                            @endphp
                                         </tbody>
                                     </table>
                                 </div>
