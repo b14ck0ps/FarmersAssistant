@@ -40,6 +40,28 @@
                             </li>
                         </ul>
                     </div>
+                    <!-- End of profile card -->
+                    <!--Start order -->
+                    <div class="p-3">
+                        <h1 class="text-xl font-bold leading-8 my-1">Orders</h1>
+                        <div class="my-5"></div>
+                        <ul class=" py-2 px-3 mt-3 divide-y rounded shadow-sm">
+                            @if (isset($orders))
+                                @foreach ($orders as $order)
+                                    <li class="flex items center py-3">
+                                        <span>{{ $order->id }}</span>
+                                        <span class="ml-16">{{ $order->total }}</span>
+                                        <span class="ml-auto">{{ date('d-m-Y', strtotime($order->created_at)) }}</span>
+                                    </li>
+                                @endforeach
+                            @else
+                                <li class="flex items center py-3">
+                                    <span>No orders yet</span>
+                                </li>
+                            @endif
+                        </ul>
+                    </div>
+                    <!--End order -->
                     <div class="my-4"></div>
                 </div>
                 <!-- Right Side -->

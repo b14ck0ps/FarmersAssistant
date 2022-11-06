@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Mails;
+use App\Models\Orders;
 use App\Models\Users\Advisors;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -20,7 +21,8 @@ class ProfileController extends Controller
             $mail->advisor_name = User::find(Advisors::find($mail->advisor_id)->first()->user_id)->getFullName();
             return $mail;
         });
-        return view('dashboards.farmers', compact('mails'));
+        $orders = Orders::where('farmer_id', session('user_id'))->get();
+        return view('dashboards.farmers', compact('mails', 'orders'));
     }
 
     public function showProfileEdit()
