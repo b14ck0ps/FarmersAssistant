@@ -74,7 +74,7 @@ padding-top: 80px;
         <li><a href="/plan_create">Plan Create</a></li>
         <li><a href="/allplan">See All Plans</a></li>
         <li><a href="/product_create">Create Product List</a></li>
-        <li><a href="#">Delete Product List</a></li>
+        <li><a href="/allproduct">See All Products</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
       <br><br>
@@ -94,7 +94,6 @@ padding-top: 80px;
 <div class="button">
     <button ><a href="/logout">Logout</a></button>
 </div>
-<button><a href="product_create">Create Product List</a></button>
 </body>
 </html>
 

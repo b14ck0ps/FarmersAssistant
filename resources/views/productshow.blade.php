@@ -44,6 +44,7 @@
 <br><br>
 
 <button type="submit" class="">Submit</button>
+<button><a href="/admin/profile">Back to Dashboard</a></button>
 
 </form>
 </div>
