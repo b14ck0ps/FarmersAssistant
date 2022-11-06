@@ -69,8 +69,10 @@ class ProductController extends Controller
     {
         $cart = session()->get('cart');
         $total_net_price = 0;
-        foreach (session()->get('cart') as $item) {
-            $total_net_price += $item['total_price'];
+        if (session()->has('cart')) {
+            foreach (session()->get('cart') as $item) {
+                $total_net_price += $item['total_price'];
+            }
         }
         return view('dashboards.cart', compact('cart', 'total_net_price'));
     }
