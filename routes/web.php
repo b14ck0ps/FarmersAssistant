@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\Admins\RegistrationController as adminRegister;
 use App\Http\Controllers\Auth\Admins\AdminProfileController;
 use App\Http\Controllers\Auth\Admins\planCreateCotroller;
 use App\Http\Controllers\Auth\Admins\productsCreateController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TestController;
 use Doctrine\DBAL\Driver\Middleware;
 use Illuminate\Support\Facades\Route;
@@ -25,9 +26,7 @@ use Illuminate\Support\Facades\Auth;
 
 //* get routes
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ProductController::class, 'index'])->name('home');
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/signup', [RegistrationController::class, 'showRegistrationForm']);
@@ -43,6 +42,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('mail', [MailController::class, 'index'])->name('mail');
     Route::post('send/mail', [MailController::class, 'send'])->name('send.mail');
     Route::get('/view/mail/{id}', [MailController::class, 'view'])->name('view.mail');
+    Route::get('/cart', [ProductController::class, 'cart'])->name('cart');
+    Route::delete('/delete-cart/{id}', [ProductController::class, 'deleteCart'])->name('delete.cart');
 });
 //admins route
 Route::get('admin/signup', [adminRegister::class, 'showRegistrationForm']);
@@ -89,3 +90,6 @@ Route::get('/logout', function () {
 //test routes
 Route::get('/test', [TestController::class, 'index']);
 Route::post('/test', [TestController::class, 'test']);
+
+//Cart routes
+Route::get('/cart/{id}', [ProductController::class, 'addCart'])->name('cart.add');
