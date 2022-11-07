@@ -80,7 +80,9 @@ class RegistrationController extends Controller
         $admin = User::find($admin->id);
         // Log the admin in
         Auth::login($admin);
-
+        session(['user_type' => Auth::user()->getUserType()]);
+        session(['user_id' => User::find(Auth::id())->admins->first()->id]);
+        $request->session()->regenerate();
         // Redirect to the admin dashboard
         //get all admins info
         return redirect()->intended(route('admins.dashboard'));

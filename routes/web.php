@@ -51,48 +51,50 @@ Route::middleware(['auth', 'farmer'])->group(function () {
 //admins route
 Route::get('admin/signup', [adminRegister::class, 'showRegistrationForm']);
 Route::post('admin/register', [adminRegister::class, 'register'])->name('admin.register');
-Route::get('admin/profile', function () {
-    return view('dashboards.admin');
-})->name('admins.dashboard');
+
+Route::middleware(['auth', 'plancheck'])->group(function (){
+    Route::get('admin/profile', function () {
+        return view('dashboards.admin');
+    })->name('admins.dashboard');
 
 
 
 
-Route::get('plan_create', [planCreateCotroller::class, 'plancreate']);
-Route::post('/plan_submit', [planCreateCotroller::class, 'plansubmit']);
+    Route::get('plan_create', [planCreateCotroller::class, 'plancreate']);
+    Route::post('/plan_submit', [planCreateCotroller::class, 'plansubmit']);
 
 
 
-Route::get('/adminupdate', [AdminProfileController::class, 'adminprofile']);
-Route::post('/startupdate', [AdminProfileController::class, 'goupdate'])->middleware('adminupdatecheck');
+    Route::get('/adminupdate', [AdminProfileController::class, 'adminprofile']);
+    Route::post('/startupdate', [AdminProfileController::class, 'goupdate']);
 
 
-Route::get('product_create', [productsCreateController::class, 'productcreate']);
-Route::post('/productsubmit', [productsCreateController::class, 'productsubmit']);
+    Route::get('product_create', [productsCreateController::class, 'productcreate']);
+    Route::post('/productsubmit', [productsCreateController::class, 'productsubmit']);
 
-//see all plans
-Route::get('allplan', [planCreateCotroller::class, 'getall']);
+    //see all plans
+    Route::get('allplan', [planCreateCotroller::class, 'getall']);
 
-//update plans
-Route::get('updateplan/{id}', [planCreateCotroller::class, 'updateplan']);
-Route::post('updateplansubmit', [planCreateCotroller::class, 'goplanupdate']);
-//delete plans
-Route::get('deleteplan/{id}', [planCreateCotroller::class, 'plandelete']);
+    //update plans
+    Route::get('updateplan/{id}', [planCreateCotroller::class, 'updateplan']);
+    Route::post('updateplansubmit', [planCreateCotroller::class, 'goplanupdate']);
+    //delete plans
+    Route::get('deleteplan/{id}', [planCreateCotroller::class, 'plandelete']);
 
-//see all products
-Route::get('allproduct', [productsCreateController::class, 'getall']);
+    //see all products
+    Route::get('allproduct', [productsCreateController::class, 'getall']);
 
-//update product
-Route::get('updateproduct/{id}', [productsCreateController::class, 'updateproduct']);
-Route::post('updateproductsubmit', [productsCreateController::class, 'goproductupdate']);
+    //update product
+    Route::get('updateproduct/{id}', [productsCreateController::class, 'updateproduct']);
+    Route::post('updateproductsubmit', [productsCreateController::class, 'goproductupdate']);
 
-//delete products
-Route::get('deleteproduct/{id}', [productsCreateController::class, 'productdelete']);
+    //delete products
+    Route::get('deleteproduct/{id}', [productsCreateController::class, 'productdelete']);
 
-Route::get('backtodashboard', function () {
-    return view('admin/profile');
+    Route::get('backtodashboard', function () {
+        return view('admin/profile');
+    });
 });
-
 
 //logout
 Route::get('/logout', function () {
