@@ -44,7 +44,7 @@ class ProfileController extends Controller
                 'dob' => 'required|date',
                 'address' => 'required|max:100',
                 'email' => 'required|email|max:255|unique:users,email,' . Auth::user()->id,
-                'username' => 'required|max:255|string|unique:users,username,' . Auth::user()->id,
+                'username' => 'required|max:255|alpha_dash|unique:users,username,' . Auth::user()->id,
             ],
             [
                 'fname.required' => 'First name is required',
