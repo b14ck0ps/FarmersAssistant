@@ -96,6 +96,11 @@ Route::middleware(['auth', 'plancheck'])->group(function (){
     });
 });
 
+Route::get('/signin_signup', function () {
+    return view('admin_detail');
+});
+
+
 //logout
 Route::get('/logout', function () {
     Auth::logout();
