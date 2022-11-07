@@ -10,6 +10,7 @@ use App\Models\Orders;
 use App\Models\Users\Advisors;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class ProfileController extends Controller
 {
@@ -49,7 +50,15 @@ class ProfileController extends Controller
         } else {
             if (Hash::check($request->password_old, Auth::user()->password)) {
                 $this->validate($request, [
-                    'password' => 'required|min:6|confirmed',
+                    'password' => [
+                        'required',
+                        'string',
+                        Password::min(8)
+                            ->mixedCase()
+                            ->numbers()
+                            ->symbols(),
+                        'confirmed'
+                    ],
                 ]);
             } else {
                 return back()->withErrors([

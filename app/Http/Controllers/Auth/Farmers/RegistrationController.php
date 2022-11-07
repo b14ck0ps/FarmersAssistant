@@ -8,6 +8,7 @@ use App\Models\Users\Farmers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class RegistrationController extends Controller
 {
@@ -29,7 +30,15 @@ class RegistrationController extends Controller
             'address' => 'required|max:100',
             'email' => 'required|email|max:255|unique:users',
             'username' => 'required|max:255|string|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'password' => [
+                'required',
+                'string',
+                Password::min(8)
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols(),
+                'confirmed'
+            ],
         ]);
 
         // Create and save the farmer
