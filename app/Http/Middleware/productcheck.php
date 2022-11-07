@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class adminupdatecheck
+class productcheck
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,6 @@ class adminupdatecheck
      */
     public function handle(Request $request, Closure $next)
     {
-        if (session()->has('id')) {
-            return redirect()->to('dashboards.admin');
-        }
         return $next($request);
-        }
     }
-
+}
