@@ -79,6 +79,16 @@ Route::post('updateplansubmit', [planCreateCotroller::class, 'goplanupdate']);
 //delete plans
 Route::get('deleteplan/{id}', [planCreateCotroller::class, 'plandelete']);
 
+//see all products
+Route::get('allproduct', [productsCreateController::class, 'getall']);
+
+//update product
+Route::get('updateproduct/{id}', [productsCreateController::class, 'updateproduct']);
+Route::post('updateproductsubmit', [productsCreateController::class, 'goproductupdate']);
+
+//delete products
+Route::get('deleteproduct/{id}', [productsCreateController::class, 'productdelete']);
+
 Route::get('backtodashboard', function () {
     return view('admin/profile');
 });

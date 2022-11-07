@@ -7,8 +7,8 @@ table, th, td {
 }
 .center{
         margin: auto;
-        height: 600px;
-        width: 650px;
+        height: 800px;
+        width: 750px;
         border: 3px solid #a1f5f5;
         padding: 10px;
     }
@@ -41,38 +41,38 @@ padding-top: 80px;
   display:block;
 
     }
-
 </style>
 </head>
 <body>;
 <div class="center">
-<h2><span style="color: #fdffff">All Plan</span></h2>
+<h2><span style="color: #fdffff">All Product</span></h2>
 
 <table>
   <tr>
-    <th><span style="color: #fdffff">Plan Name</span></th><br>
+    <th><span style="color: #fdffff">Title</span></th><br>
     <th><span style="color: #fdffff">Drescription</span></th>
+    <th><span style="color: #fdffff">Quantity</span></th>
     <th><span style="color: #fdffff">Price</span></th>
-    <th><span style="color: #fdffff">Order Discount</span></th>
+    <th><span style="color: #fdffff">Image</span></th>
     <th><span style="color: #fdffff">Edit</span></th>
     <th><span style="color: #fdffff">Delete</span></th>
   </tr>
   @foreach ($usetable as $usetable)
   <tr>
-    <td><span style="color: #fdffff">{{ $usetable['planName'] }}</span></td>
+    <td><span style="color: #fdffff">{{ $usetable['title'] }}</span></td>
     <td><span style="color: #fdffff">{{ $usetable['description'] }}</span></td>
+    <td><span style="color: #fdffff">{{ $usetable['quantity'] }}</span></td>
     <td><span style="color: #fdffff">{{ $usetable['price'] }}</span></td>
-    <td><span style="color: #fdffff">{{ $usetable['orderDiscount'] }}</span></td>
-    <td><button class="button1"><a href="/updateplan/{{ $usetable['id'] }}">Update</a></button></td>
-    <td><button class="button2"><a href="/deleteplan/{{ $usetable['id'] }}">Delete</a></button></td>
+    <td><span style="color: #fdffff"><image height="40px" width="40px" src="{{ asset('uploads/product/'.$usetable['image']) }}"></span></td>
+    <td><button class="button1"><a href="/updateproduct/{{ $usetable['id'] }}">Update</a></button></td>
+    <td><button class="button2"><a href="/deleteproduct/{{ $usetable['id'] }}">Delete</a></button></td>
   </tr>
   @endforeach
 
 
 </table>
-
 <div class="button">
-     <button><a href="/admin/profile">Back to Dashboard</a></button></>
+     <button><a href="/admin/profile">Back to Dashboard</a></button>
 </div>
 </div>
 </body>
