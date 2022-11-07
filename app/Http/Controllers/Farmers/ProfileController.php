@@ -6,9 +6,11 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Mails;
+use App\Models\Orders;
 use App\Models\Users\Advisors;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class ProfileController extends Controller
 {
@@ -20,7 +22,8 @@ class ProfileController extends Controller
             $mail->advisor_name = User::find(Advisors::find($mail->advisor_id)->first()->user_id)->getFullName();
             return $mail;
         });
-        return view('dashboards.farmers', compact('mails'));
+        $orders = Orders::where('farmer_id', session('user_id'))->get();
+        return view('dashboards.farmers', compact('mails', 'orders'));
     }
 
     public function showProfileEdit()
@@ -30,24 +33,50 @@ class ProfileController extends Controller
     //profile update
     public function updateProfile(Request $request)
     {
-        $this->validate($request, [
-            'fname' => 'required|max:30|alpha',
-            'lname' => 'required|max:30|alpha',
-            'city' => 'required|max:30|string',
-            'postCode' => 'required|numeric|digits:4',
-            'gender' => 'required',
-            'dob' => 'required|date',
-            'address' => 'required|max:100',
-            'email' => 'required|email|max:255|unique:users,email,' . Auth::user()->id,
-            'username' => 'required|max:255|string|unique:users,username,' . Auth::user()->id,
-        ]);
+        $this->validate(
+            $request,
+            [
+                'fname' => 'required|max:30|alpha',
+                'lname' => 'required|max:30|alpha',
+                'city' => 'required|max:30|string',
+                'postCode' => 'required|numeric|digits:4',
+                'gender' => 'required',
+                'dob' => 'required|date',
+                'address' => 'required|max:100',
+                'email' => 'required|email|max:255|unique:users,email,' . Auth::user()->id,
+                'username' => 'required|max:255|alpha_dash|unique:users,username,' . Auth::user()->id,
+            ],
+            [
+                'fname.required' => 'First name is required',
+                'fname.max' => 'First name must be less than 30 characters',
+                'fname.alpha' => 'First name must be only letters',
+                'lname.required' => 'Last name is required',
+                'lname.max' => 'Last name must be less than 30 characters',
+                'lname.alpha' => 'Last name must be only letters',
+                'city.required' => 'City is required',
+                'city.max' => 'City must be less than 30 characters',
+                'city.string' => 'City must be a string',
+                'postCode.required' => 'Post code is required',
+                'postCode.numeric' => 'Post code must be a number',
+                'postCode.digits' => 'Post code must be 4 digits'
+            ]
+
+        );
         // Validate the form data
         if (is_null($request->password_old)) {
             $request->password = Auth::user()->password;
         } else {
             if (Hash::check($request->password_old, Auth::user()->password)) {
                 $this->validate($request, [
-                    'password' => 'required|min:6|confirmed',
+                    'password' => [
+                        'required',
+                        'string',
+                        Password::min(8)
+                            ->mixedCase()
+                            ->numbers()
+                            ->symbols(),
+                        'confirmed'
+                    ],
                 ]);
             } else {
                 return back()->withErrors([

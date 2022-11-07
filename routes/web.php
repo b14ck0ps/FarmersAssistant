@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\Admins\RegistrationController as adminRegister;
 use App\Http\Controllers\Auth\Admins\AdminProfileController;
 use App\Http\Controllers\Auth\Admins\planCreateCotroller;
 use App\Http\Controllers\Auth\Admins\productsCreateController;
+use App\Http\Controllers\Farmers\CheckoutController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TestController;
 use Doctrine\DBAL\Driver\Middleware;
@@ -35,7 +36,7 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/login', [LoginController::class, 'login']);
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'farmer'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'showProfile'])->name('farmers.dashboard');
     Route::get('/profile/edit', [ProfileController::class, 'showProfileEdit'])->name('farmers.editProfile');
     Route::post('/updateProfile', [ProfileController::class, 'updateProfile'])->name('updateProfile');
@@ -44,6 +45,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/view/mail/{id}', [MailController::class, 'view'])->name('view.mail');
     Route::get('/cart', [ProductController::class, 'cart'])->name('cart');
     Route::delete('/delete-cart/{id}', [ProductController::class, 'deleteCart'])->name('delete.cart');
+    Route::get('/checkout', [CheckoutController::class, 'store'])->name('checkout');
+    Route::post('/search/mail', [MailController::class, 'searchMails'])->name('search.mail');
 });
 //admins route
 Route::get('admin/signup', [adminRegister::class, 'showRegistrationForm']);
