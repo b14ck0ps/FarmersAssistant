@@ -18,84 +18,84 @@
 
 <body>
 <div class='center'>
-<h1>Registration</h1>
+<span style="color: #ffffff"><h1>Registration</h1></span>
 <form action="/admin/register" method="post">
 @csrf
 
-<span><b>Fisrt Name</b></span> <input type="text" name="fname">
+<span style="color: #ffffff"><b>Fisrt Name</b></span> <input type="text" name="firstName">
 @if($errors->has('firstName'))
-<b>{{$errors->first('firstName')}}</b>
+<span style="color: #eb1515"><b>{{$errors->first('firstName')}}</b></span>
 @endif
 <br><br>
 
-<span><b>Last Name</b></span> <input type="text" name="lname">
+<span style="color: #ffffff"><b>Last Name</b></span> <input type="text" name="lastName">
 @if($errors->has('lastName'))
-<b>{{$errors->first('lastName')}}</b>
+<span style="color: #eb1515"><b>{{$errors->first('lastName')}}</b></span>
 @endif
 <br><br>
 
-<span><b>User Name</b></span> <input type="text" name="username">
+<span style="color: #ffffff"><b>User Name</b></span> <input type="text" name="username">
 @if($errors->has('username'))
-<b>{{$errors->first('username')}}</b>
+<span style="color: #eb1515"><b>{{$errors->first('username')}}</b></span>
 @endif
 <br><br>
 
-<span><b>Zip-Code</b></span> <input type="number" name="postCode">
+<span style="color: #ffffff"><b>Zip-Code</b></span> <input type="number" name="postalCode">
 @if($errors->has('postalCode'))
-<b>{{$errors->first('postalCode')}}</b>
+<span style="color: #eb1515"><b>{{$errors->first('postalCode')}}</b></span>
 @endif
 <br><br>
 
-<span><b>City</b></span> <input type="text" name="city">
+<span style="color: #ffffff"><b>City</b></span> <input type="text" name="city">
 @if($errors->has('city'))
-<b>{{$errors->first('city')}}</b>
+<span style="color: #eb1515"><b>{{$errors->first('city')}}</b></span>
 @endif
 <br><br>
 
-<span><b>Gender</b></span>
-<input type="radio" name="gender" value="Male">Male
-<input type="radio" name="gender" value="Female">Female
+<span style="color: #ffffff"><b>Gender</b></span>
+<span style="color: #ffffff"><input type="radio" name="gender" value="Male">Male</span>
+<span style="color: #ffffff"><input type="radio" name="gender" value="Female">Female</span>
 @if($errors->has('gender'))
-<b>{{$errors->first('gender')}}</b>
+<span style="color: #eb1515"><b>{{$errors->first('gender')}}</b></span>
 @endif
 <br><br>
 
-<span><b>Date of birth</b></span> <input type="date" name="dob">
+<span style="color: #ffffff"><b>Date of birth</b></span> <input type="date" name="dob">
 @if($errors->has('dob'))
-<b>{{$errors->first('dob')}}</b>
+<span style="color: #eb1515"><b>{{$errors->first('dob')}}</b></span>
 @endif
 <br><br>
 
 
 
-<span><b>Address</b></span>
+<span style="color: #ffffff"><b>Address</b></span>
 <textarea id="address" name="address" rows="4" cols="20"></textarea>
 @if($errors->has('address'))
-<b>{{$errors->first('address')}}</b>
+<span style="color: #eb1515"><b>{{$errors->first('address')}}</b></span>
 @endif
 <br><br>
 
-<span><b>Email</b></span> <input type="email" name="email">
+<span style="color: #ffffff"><b>Email</b></span> <input type="email" name="email">
 @if($errors->has('email'))
-<b>{{$errors->first('email')}}</b>
+<span style="color: #eb1515"><b>{{$errors->first('email')}}</b></span>
 @endif
 <br><br>
 
-<span><b>Phone</b></span> <input type="text" name="phone">
+<span style="color: #ffffff"><b>Phone</b></span> <input type="text" name="phone">
 @if($errors->has('phone'))
-<b>{{$errors->first('phone')}}</b>
+<span style="color: #eb1515"><b>{{$errors->first('phone')}}</b></span>
 @endif
 <br><br>
 
 
-<span><b>Password</b></span> <input type="password" name="password">
+<span style="color: #ffffff"><b>Password</b></span> <input type="password" name="password">
 @if($errors->has('password'))
-<b>{{$errors->first('password')}}</b>
+<span style="color: #eb1515"><b>{{$errors->first('password')}}</b></span>
 @endif
 <br><br>
-<span><b>Confirm Password</b></span> <input type="password" name="password_confirmation">
+<span style="color: #ffffff"><b>Confirm Password</b></span> <input type="password" name="password_confirmation">
 @if($errors->has('password'))
-<b>{{$errors->first('password')}}</b>
+<span style="color: #eb1515"><b>{{$errors->first('password')}}</b></span>
 @endif
 <br><br>
 <button type="submit" class="">Submit</button>
