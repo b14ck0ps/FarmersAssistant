@@ -24,14 +24,24 @@
                         <option value="{{ $advisor->id }}">{{ $advisor->full_name }}</option>
                     @endforeach
                 </select>
+                @error('advisor_id')
+                    <div class="text-red-500 mt-2 text-sm">
+                        {{ $message }}
+                    </div>
+                @enderror
                 <div class="relative my-6">
                     <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                         <x-far-pen-to-square class="w-5 h-5 text-gray-500" />
                     </div>
-                    <input name="subject" type="text" id="input-group-1"
+                    <input name="subject" type="text" id="input-group-1" value="{{ old('subject') }}"
                         class="text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5   bg-gray-700  border-gray-600  placeholder-gray-400  text-white"
                         placeholder="Write a Short details">
                 </div>
+                @error('subject')
+                    <div class="text-red-500 mt-2 text-sm">
+                        {{ $message }}
+                    </div>
+                @enderror
                 <div class="mt-2">
                     <div class="mb-4 w-full  rounded-lg border border-gray-700  ">
                         <div class="flex justify-between items-center py-2 px-3 border-b  border-gray-900">
@@ -83,12 +93,17 @@
                         </div>
                         <div class="py-2 px-4 rounded-b-lg ">
                             <label for="editor" class="sr-only">New message</label>
-                            <textarea name="body" id="editor" rows="8"
+                            <textarea name="body" id="editor" rows="8" value="{{ old('body') }}"
                                 class="block px-0 w-full text-sm text-white border-0  focus:ring-0 " placeholder="Write your problems..."
                                 required=""></textarea>
                         </div>
                     </div>
                 </div>
+                @error('body')
+                    <div class="text-red-500 mt-2 text-sm">
+                        {{ $message }}
+                    </div>
+                @enderror
                 <button type="submit"
                     class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200">
                     Send
