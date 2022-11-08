@@ -47,12 +47,13 @@ Route::middleware(['auth', 'farmer'])->group(function () {
     Route::delete('/delete-cart/{id}', [ProductController::class, 'deleteCart'])->name('delete.cart');
     Route::get('/checkout', [CheckoutController::class, 'store'])->name('checkout');
     Route::post('/search/mail', [MailController::class, 'searchMails'])->name('search.mail');
+    Route::delete('/delete/mail/{id}', [MailController::class, 'deleteMail'])->name('delete.mail');
 });
 //admins route
 Route::get('admin/signup', [adminRegister::class, 'showRegistrationForm']);
 Route::post('admin/register', [adminRegister::class, 'register'])->name('admin.register');
 
-Route::middleware(['auth', 'plancheck'])->group(function (){
+Route::middleware(['auth', 'plancheck'])->group(function () {
     Route::get('admin/profile', function () {
         return view('dashboards.admin');
     })->name('admins.dashboard');

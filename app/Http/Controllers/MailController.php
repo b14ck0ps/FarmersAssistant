@@ -69,4 +69,10 @@ class MailController extends Controller
         $request->session()->put('user_mails', $mails_serarched);
         return redirect()->back();
     }
+    //deleteMail
+    public function deleteMail($id)
+    {
+        Mails::find($id)->delete();
+        return redirect('/profile')->with('success', 'Mail deleted successfully');
+    }
 }

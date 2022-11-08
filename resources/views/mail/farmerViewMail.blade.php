@@ -53,6 +53,16 @@
                     Back
                 </a>
             </aside>
+            <form action="{{ route('delete.mail', $mail->id) }}" method="POST">
+                <aside class="flex items-center mt-3 space-x-5">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit"
+                        class="inline-flex items-center text-sm font-medium text-red-600 hover:underline dark:text-red-500">
+                        Delete
+                    </button>
+                </aside>
+            </form>
         </article>
 
     </div>
