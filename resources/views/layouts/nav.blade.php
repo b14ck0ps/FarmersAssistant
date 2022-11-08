@@ -14,6 +14,15 @@
                             @svg('tni-signin-o', 'w-5') sign in</a></div>
                 @endif
             @endguest
+        {{-- /////////// --}}
+        @guest
+
+            <div><a class="flex items-center gap-2 hover:text-orange-500" href="/signin_signup">
+                    @svg('iconsax-bro-signpost', 'w-5') Admin</a></div>
+
+        @endguest
+
+        {{-- ////////// --}}
             <div class="flex items-center gap-2">
                 <a href="/cart" class="flex items-center gap-2 hover:text-orange-500">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
