@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('postalCode');
             $table->string('address');
             $table->string('phone');
-            $table->string('photo')->nullable();
+            $table->string('photo')->default("default_avater.png");
             $table->rememberToken();
             $table->timestamps();
         });

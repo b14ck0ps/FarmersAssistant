@@ -23,7 +23,7 @@
                                 alt="">
                         </div>
                         <img class="rounded-full mx-auto h-40 w-40  shadow"
-                            src="https://extendedevolutionarysynthesis.com/wp-content/uploads/2018/02/avatar-1577909_960_720.png">
+                            src="{{ URL::asset('uploads/avater') }}/{{ Auth::User()->photo }}">
                         <div class="my-5"></div>
                         <h1 class="font-bold text-xl leading-8 my-1">{{ Auth::user()->getFullName() }}</h1>
                         <h3 class=" font-lg text-semibold leading-6">Farmer from {{ Auth::user()->city }}</h3>
