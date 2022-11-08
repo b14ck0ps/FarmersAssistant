@@ -5,8 +5,7 @@
         <article class="md:gap-8 md:grid md:grid-cols-3">
             <div>
                 <div class="flex items-center mb-6 space-x-4">
-                    <img class="w-10 h-10 rounded-full"
-                        src="https://extendedevolutionarysynthesis.com/wp-content/uploads/2018/02/avatar-1577909_960_720.png"
+                    <img class="w-10 h-10 rounded-full" src="{{ URL::asset('uploads/avater') }}/{{ $advisor->photo }}"
                         alt="">
                     <div class="space-y-1 font-medium text-white">
                         <p>{{ $advisor->firstName }} {{ $advisor->lastName }}</p>
