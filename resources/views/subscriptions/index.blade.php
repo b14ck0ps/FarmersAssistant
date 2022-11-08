@@ -1,6 +1,19 @@
 @extends('layouts.app')
 @section('content')
-    <div class="flex items-center justify-center max-h-screen lg:overflow-hidden lg:mt-56">
+    <div class="flex flex-col items-center justify-center max-h-screen lg:overflow-hidden lg:mt-56">
+        <div class="flex items-center justify-center gap-10 mb-10">
+            <div class="flex flex-col items-center justify-center gap-2">
+                <h1 class="text-2xl font-bold">Account</h1>
+            </div>
+            <!-----Method------>
+            <div>
+                <input type="text" id="pay_method"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Bank ID" required>
+            </div>
+            <!-----MethodEnd------>
+        </div>
+
         <div class="container w-[1200px] p-5 h-[390px] flex gap-5 flex-wrap justify-center">
             @foreach ($plans as $plan)
                 <div class="p-4 w-[200px] max-w-sm rounded-lg border shadow-md sm:p-8 bg-gray-800 border-gray-700">
@@ -38,9 +51,9 @@
                             <span class="text-base font-normal leading-tight text-gray-400">{{ $plan->description }}</span>
                         </li>
                     </ul>
-                    <button type="submit"
+                    <a href="{{ route('subscription.subscribe', $plan->id) }}"
                         class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Choose
-                        plan</button>
+                        plan</a>
                 </div>
             @endforeach
         </div>

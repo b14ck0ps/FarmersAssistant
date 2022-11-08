@@ -49,6 +49,7 @@ Route::middleware(['auth', 'farmer'])->group(function () {
     Route::post('/search/mail', [MailController::class, 'searchMails'])->name('search.mail');
     Route::delete('/delete/mail/{id}', [MailController::class, 'deleteMail'])->name('delete.mail');
     Route::get('/subscription/buy', [SubscriptionsController::class, 'index'])->name('subscription.buy');
+    Route::get('/subscribe/{id}', [SubscriptionsController::class, 'subscribe'])->name('subscription.subscribe');
 });
 //admins route
 Route::get('admin/signup', [adminRegister::class, 'showRegistrationForm']);
