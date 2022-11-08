@@ -57,7 +57,17 @@ class RegistrationController extends Controller
                 'postCode.digits' => 'Post code must be 4 digits'
             ]
         );
-
+        $photo = "default_avater.png";
+        // profile image
+        if (isset($request->photo)) {
+            $request->validate([
+                'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
+            $image = $request->file('photo');
+            $photo = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads/avater/');
+            $image->move($destinationPath, $photo);
+        }
         // Create and save the farmer
         $farmer = User::create([
             'firstName' => $request->fname,
@@ -71,12 +81,12 @@ class RegistrationController extends Controller
             'address' => $request->address,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'photo' => $photo,
         ]);
         //create a instance of the farmer
         Farmers::create([
             'user_id' => $farmer->id,
         ]);
-
         $farmer = User::find($farmer->id);
         // Log the farmer in
         Auth::login($farmer);

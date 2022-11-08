@@ -99,6 +99,29 @@ class ProfileController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        if (isset($request->photo)) {
+            $request->validate([
+                'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
+
+            $oldPhoto = User::find(Auth::user()->id)->photo;
+            $image = $request->file('photo');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads/avater/');
+            $image->move($destinationPath, $name);
+            User::find(Auth::user()->id)->update([
+                'photo' => $name,
+            ]);
+
+            // delete old image
+            if ($oldPhoto != 'default_avater.png') {
+                $file = public_path() . "/uploads/avater/" . $oldPhoto;
+                if (file_exists($file)) {
+                    @unlink($file);
+                }
+            }
+        }
+
         $request->session()->regenerate();
         return redirect()->route('farmers.dashboard')->with('success', 'Profile updated successfully');
     }

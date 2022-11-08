@@ -2,7 +2,7 @@
 @section('content')
     <div class="container w-[300px] md:w-[600px] m-auto p-5">
         <p class=" text-3xl p-5 mb-5 text-center">Registration</p>
-        <form method="POST" action="/register">
+        <form method="POST" action="/register" enctype="multipart/form-data">
             @csrf
             <div class="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
@@ -120,6 +120,15 @@
                     class="bg-gray-900  text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                     placeholder="•••••••••" required="">
                 @error('password')
+                    <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="mb-6">
+                <label for="confirm_password" class="block mb-2 text-sm font-medium ">Upload Profile picture</label>
+                <input name="photo"
+                    class="block w-full p-2 text-sm cursor-pointer text-gray-400 focus:outline-none bg-gray-900 border-gray-600 placeholder-gray-400 rounded-xl"
+                    id="file_input" type="file">
+                @error('photo')
                     <p class="text-red-500 text-xs italic">{{ $message }}</p>
                 @enderror
             </div>

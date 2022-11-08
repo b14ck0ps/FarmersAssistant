@@ -6,12 +6,15 @@
         <h1 class="text-center text-2xl font-bold mt-5">Edit Profile</h1>
         <div class="my-5"></div>
         <div class=" my-5">
-            <form method="POST" action="/updateProfile">
+            <form method="POST" action="/updateProfile" enctype="multipart/form-data">
                 <label class="block mb-2 text-sm font-medium  text-gray-300" for="file_input">Upload
                     Profile Picture</label>
-                <input
+                <input name="photo"
                     class="block w-full p-2 text-sm cursor-pointer text-gray-400 focus:outline-none bg-gray-900 border-gray-600 placeholder-gray-400 rounded-xl"
                     id="file_input" type="file">
+                @error('photo')
+                    <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                @enderror
         </div>
         @csrf
         <div class="grid gap-6 mb-6 md:grid-cols-2">
@@ -97,7 +100,8 @@
                 Address</label>
             <input type="address" name="address"
                 class="bg-gray-900 text-white   text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5    "
-                placeholder="1/3 Dhaka , Bangladesh" required="" value="{{ old('address') ?? Auth::User()->address }}">
+                placeholder="1/3 Dhaka , Bangladesh" required=""
+                value="{{ old('address') ?? Auth::User()->address }}">
             @error('address')
                 <p class="text-red-500 text-xs italic">{{ $message }}</p>
             @enderror
