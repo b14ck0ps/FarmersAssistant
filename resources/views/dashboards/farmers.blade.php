@@ -31,8 +31,8 @@
                         <ul class=" py-2 px-3 mt-3 divide-y rounded shadow-sm">
                             <li class="flex items-center py-3">
                                 <span>Status</span>
-                                <span class="ml-auto"><span
-                                        class="bg-green-500 py-1 px-2 rounded text-white text-sm">Active</span></span>
+                                <span class="ml-auto"><a href="{{ route('subscription.buy') }}"
+                                        class="bg-green-500 py-1 px-2 rounded text-white text-sm">Active</a></span>
                             </li>
                             <li class="flex items-center py-3">
                                 <span>Member since</span>

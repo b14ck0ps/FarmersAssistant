@@ -10,8 +10,8 @@ use App\Http\Controllers\Auth\Admins\planCreateCotroller;
 use App\Http\Controllers\Auth\Admins\productsCreateController;
 use App\Http\Controllers\Farmers\CheckoutController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SubscriptionsController;
 use App\Http\Controllers\TestController;
-use Doctrine\DBAL\Driver\Middleware;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -48,6 +48,7 @@ Route::middleware(['auth', 'farmer'])->group(function () {
     Route::get('/checkout', [CheckoutController::class, 'store'])->name('checkout');
     Route::post('/search/mail', [MailController::class, 'searchMails'])->name('search.mail');
     Route::delete('/delete/mail/{id}', [MailController::class, 'deleteMail'])->name('delete.mail');
+    Route::get('/subscription/buy', [SubscriptionsController::class, 'index'])->name('subscription.buy');
 });
 //admins route
 Route::get('admin/signup', [adminRegister::class, 'showRegistrationForm']);
