@@ -23,7 +23,7 @@ class LoginController extends Controller
         ]);
 
         $credentials = request(['email', 'password']);
-        if (!Auth::attempt($credentials)) {
+        if (!Auth::attempt($credentials, $request->remember)) {
             return back()->withErrors([
                 'email' => 'The provided credentials do not match our records.',
             ])->onlyInput('email');

@@ -18,7 +18,7 @@
                 <div class="flex justify-between mt-3">
 
                     <div class="flex items-center">
-                        <input id="link-checkbox" type="checkbox" value="" class="w-4 h-4">
+                        <input id="link-checkbox" type="checkbox" name="remember" value="True" class="w-4 h-4">
                         <label for="link-checkbox" class="ml-2 font-medium ">Remember
                             me</label>
                     </div>
