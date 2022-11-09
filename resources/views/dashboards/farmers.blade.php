@@ -242,8 +242,8 @@
                                         </thead>
                                         <tbody>
                                             @php
-                                                if (session('user_mails')) {
-                                                    $mails = session('user_mails');
+                                                if (session()->has('mails_serarched')) {
+                                                    $mails = session()->get('mails_serarched');
                                                 }
                                             @endphp
                                             @foreach ($mails as $mail)
@@ -270,11 +270,6 @@
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                            @php
-                                                if ($mails = session('user_mails')) {
-                                                    session()->forget('user_mails');
-                                                }
-                                            @endphp
                                         </tbody>
                                     </table>
                                 </div>

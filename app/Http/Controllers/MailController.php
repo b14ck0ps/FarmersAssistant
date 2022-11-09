@@ -66,8 +66,7 @@ class MailController extends Controller
             $mail->advisor_name = User::find(Advisors::find($mail->advisor_id)->first()->user_id)->getFullName();
             return $mail;
         });
-        $request->session()->put('user_mails', $mails_serarched);
-        return redirect()->back();
+        return redirect()->back()->with('mails_serarched', $mails_serarched);
     }
     //deleteMail
     public function deleteMail($id)
