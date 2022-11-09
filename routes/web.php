@@ -40,7 +40,7 @@ Route::middleware(['auth', 'farmer'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'showProfile'])->name('farmers.dashboard');
     Route::get('/profile/edit', [ProfileController::class, 'showProfileEdit'])->name('farmers.editProfile');
     Route::post('/updateProfile', [ProfileController::class, 'updateProfile'])->name('updateProfile');
-    Route::get('mail', [MailController::class, 'index'])->name('mail');
+    Route::get('mail', [MailController::class, 'index'])->name('mail')->middleware('subscriber');
     Route::post('send/mail', [MailController::class, 'send'])->name('send.mail');
     Route::get('/view/mail/{id}', [MailController::class, 'view'])->name('view.mail');
     Route::get('/cart', [ProductController::class, 'cart'])->name('cart');
