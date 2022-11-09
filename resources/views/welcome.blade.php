@@ -4,7 +4,8 @@
     @include('components.carousel')
     <!----Searchbar-->
     <div class="mx-52 mt-10">
-        <form>
+        <form action="{{ route('search.product') }}" method="POST">
+            @csrf
             <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Your Email</label>
             <div class="relative">
                 <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
@@ -14,7 +15,7 @@
                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
                 </div>
-                <input type="search" id="search"
+                <input type="search" id="search" name="search"
                     class="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Search products" required="">
                 <button type="submit"
@@ -25,6 +26,11 @@
 
     <!-- Products Card-->
     <div class="flex flex-wrap mx-10 items-center justify-center">
+        @php
+            if (session()->has('products')) {
+                $products = session()->get('products');
+            }
+        @endphp
         @foreach ($products as $product)
             <div class="w-60 max-w-sm rounded-lg shadow-md bg-gray-900 border-gray-700 m-10" id="{{ $product->id }}">
                 <a href="#">

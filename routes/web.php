@@ -117,3 +117,4 @@ Route::post('/test', [TestController::class, 'test']);
 
 //Cart routes
 Route::get('/cart/{id}', [ProductController::class, 'addCart'])->name('cart.add');
+Route::post('/search/product', [ProductController::class, 'searchProducts'])->name('search.product');

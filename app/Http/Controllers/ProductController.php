@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Termwind\Components\Dd;
 
 class ProductController extends Controller
 {
@@ -87,5 +86,12 @@ class ProductController extends Controller
             session()->put('total_quantity', $total_quantity - 1);
         }
         return redirect()->back()->with('success', 'Product removed successfully');
+    }
+    //search product
+    public function searchProducts(Request $request)
+    {
+        $search = $request->search;
+        $products = Product::where('title', 'like', '%' . $search . '%')->get();
+        return redirect()->route('home')->with('products', $products);
     }
 }
