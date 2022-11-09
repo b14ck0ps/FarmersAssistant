@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Farmers;
 
+use Carbon\Carbon;
+use App\Models\Plan;
 use App\Models\User;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Mails;
 use App\Models\Orders;
+use Illuminate\Http\Request;
+use App\Models\Subscriptions;
 use App\Models\Users\Advisors;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
@@ -23,6 +26,12 @@ class ProfileController extends Controller
             return $mail;
         });
         $orders = Orders::where('farmer_id', session('user_id'))->get();
+        $subscription = Subscriptions::where('farmer_id', session('user_id'))->first();
+        if (isset($subscription)) {
+            $sub_end = Carbon::now()->diffInDays(Carbon::parse($subscription->end_date));
+            $plan = Plan::find($subscription->plan_id);
+            return view('dashboards.farmers', compact('mails', 'orders', 'plan', 'subscription', 'sub_end'));
+        }
         return view('dashboards.farmers', compact('mails', 'orders'));
     }
 

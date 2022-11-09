@@ -30,11 +30,80 @@
 
                         <ul class=" py-2 px-3 mt-3 divide-y rounded shadow-sm">
                             <li class="flex items-center py-3">
-                                <span>Status</span>
+                                <span>Subscription</span>
                                 @if (session('subs') == 1)
-                                    <span class="ml-auto"><a href="{{ route('subscription.buy') }}"
-                                            class="bg-amber-500 py-1 px-2 rounded text-black text-sm">Premium
-                                            User</a></span>
+                                    <span data-popover-target="popover-right" data-popover-placement="right" type="button"
+                                        class="ml-auto bg-amber-500 py-1 px-2 rounded text-black text-sm cursor-pointer flex gap-2">{{ $plan->planName }}
+                                        <!------icon----->
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="w-5">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                                        </svg>
+
+                                        <!------iconend----->
+
+                                    </span>
+                                    <div data-popover="" id="popover-right" role="tooltip"
+                                        class="inline-block absolute invisible z-10 w-64 text-sm font-light rounded-lg border  shadow-sm opacity-0 transition-opacity duration-300 text-gray-400 border-gray-600 bg-gray-800"
+                                        style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(10px, 0px);"
+                                        data-popper-reference-hidden="" data-popper-escaped=""
+                                        data-popper-placement="right">
+                                        <div class="py-2 px-3 rounded-t-lg border-b  border-gray-600 bg-gray-700">
+                                            <h3 class="font-semibold  text-center text-white"><span
+                                                    class="font-bold">{{ $plan->planName }} </span>Subscription
+                                            </h3>
+                                        </div>
+                                        <div class="py-2 px-3">
+                                            <div>
+
+                                                <ul class="space-y-4 text-left text-gray-500 dark:text-gray-400">
+                                                    <li class="flex items-center space-x-3">
+                                                        <!-- Icon -->
+                                                        <svg class="flex-shrink-0 w-5 h-5 text-green-400"
+                                                            fill="currentColor" viewBox="0 0 20 20"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                                clip-rule="evenodd"></path>
+                                                        </svg>
+                                                        <span>Discount: <span
+                                                                class="font-semibold text-gray-900 dark:text-white">{{ $plan->orderDiscount }}
+                                                                %</span></span>
+                                                    </li>
+                                                    <li class="flex items-center space-x-3">
+                                                        <!-- Icon -->
+                                                        <svg class="flex-shrink-0 w-5 h-5 text-green-400"
+                                                            fill="currentColor" viewBox="0 0 20 20"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                                clip-rule="evenodd"></path>
+                                                        </svg>
+                                                        <span>Ends in: <span
+                                                                class="font-semibold text-gray-900 dark:text-white">{{ $sub_end }}
+                                                                Days</span></span>
+                                                    </li>
+                                                    <li class="flex items-center space-x-3">
+                                                        <!-- Icon -->
+                                                        <svg class="flex-shrink-0 w-5 h-5 text-green-400"
+                                                            fill="currentColor" viewBox="0 0 20 20"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                                clip-rule="evenodd"></path>
+                                                        </svg>
+                                                        <span>Since: <span
+                                                                class="font-semibold text-gray-900 dark:text-white">{{ date('M j, Y', strtotime($subscription->start_date)) }}
+                                                            </span></span>
+                                                    </li>
+                                                </ul>
+
+                                            </div>
+                                        </div>
+                                        <div data-popper-arrow=""
+                                            style="position: absolute; top: 0px; transform: translate(0px, 0px);"></div>
+                                    </div>
                                 @else
                                     <span class="ml-auto"><a href="{{ route('subscription.buy') }}"
                                             class="bg-yellow-200 py-1 px-2 rounded text-black text-sm">Buy
@@ -43,7 +112,7 @@
                             </li>
                             <li class="flex items-center py-3">
                                 <span>Member since</span>
-                                <span class="ml-auto">{{ Auth::user()->created_at }}</span>
+                                <span class="ml-auto">{{ date('M j, Y', strtotime(Auth::user()->created_at)) }}</span>
                             </li>
                         </ul>
                     </div>
@@ -110,7 +179,8 @@
                                 </div>
                                 <div class="grid grid-cols-2">
                                     <div class="px-4 py-2 font-semibold">City & Post Code </div>
-                                    <div class="px-4 py-2">{{ Auth::user()->city }} , {{ Auth::user()->postalCode }}</div>
+                                    <div class="px-4 py-2">{{ Auth::user()->city }} , {{ Auth::user()->postalCode }}
+                                    </div>
                                 </div>
                                 <div class="grid grid-cols-2">
                                     <div class="px-4 py-2 font-semibold">Email.</div>
