@@ -29,6 +29,6 @@ class SubscriptionsController extends Controller
             'subscription' => 1,
         ]);
         session(['subs' => 1]);
-        return redirect()->route('farmers.dashboard')->with('success', 'You have successfully subscribed to the ' . $plan->name . ' plan');
+        return redirect()->route('farmers.dashboard')->with('success', 'You have successfully subscribed to the ' . $plan->planName . ' plan');
     }
 }
