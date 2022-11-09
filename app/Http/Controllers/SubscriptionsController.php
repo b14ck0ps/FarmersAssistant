@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Plan;
 use App\Models\Subscriptions;
+use App\Models\Users\Farmers;
 use Illuminate\Http\Request;
 
 class SubscriptionsController extends Controller
@@ -17,7 +18,6 @@ class SubscriptionsController extends Controller
     public function subscribe($id)
     {
         $plan = Plan::find($id);
-        $user = auth()->user();
         Subscriptions::create([
             'status' => 1,
             'start_date' => now(),
@@ -25,7 +25,10 @@ class SubscriptionsController extends Controller
             'farmer_id' => session('user_id'),
             'plan_id' => $id,
         ]);
-
-        return redirect()->route('farmers.dashboard');
+        Farmers::where('id', session('user_id'))->update([
+            'subscription' => 1,
+        ]);
+        session(['subs' => 1]);
+        return redirect()->route('farmers.dashboard')->with('success', 'You have successfully subscribed to the ' . $plan->name . ' plan');
     }
 }

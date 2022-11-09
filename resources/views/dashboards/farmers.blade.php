@@ -31,8 +31,15 @@
                         <ul class=" py-2 px-3 mt-3 divide-y rounded shadow-sm">
                             <li class="flex items-center py-3">
                                 <span>Status</span>
-                                <span class="ml-auto"><a href="{{ route('subscription.buy') }}"
-                                        class="bg-green-500 py-1 px-2 rounded text-white text-sm">Active</a></span>
+                                @if (session('subs') == 1)
+                                    <span class="ml-auto"><a href="{{ route('subscription.buy') }}"
+                                            class="bg-amber-500 py-1 px-2 rounded text-black text-sm">Premium
+                                            User</a></span>
+                                @else
+                                    <span class="ml-auto"><a href="{{ route('subscription.buy') }}"
+                                            class="bg-yellow-200 py-1 px-2 rounded text-black text-sm">Buy
+                                            Premium</a></span>
+                                @endif
                             </li>
                             <li class="flex items-center py-3">
                                 <span>Member since</span>

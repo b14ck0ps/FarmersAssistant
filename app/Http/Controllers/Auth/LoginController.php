@@ -32,6 +32,7 @@ class LoginController extends Controller
             if (Auth::user()->getUserType() == 'FARMER') {
                 $request->session()->regenerate();
                 session(['user_id' => User::find(Auth::id())->farmers->first()->id]);
+                session(['subs' => User::find(Auth::id())->farmers->first()->subscription]);
                 return redirect()->intended(route('farmers.dashboard'));
             } else if (Auth::user()->getUserType() == 'ADVISOR') {
                 session(['user_id' => User::find(Auth::id())->advisors->first()->id]);
