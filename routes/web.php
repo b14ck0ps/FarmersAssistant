@@ -107,6 +107,7 @@ Route::get('/signin_signup', function () {
 //logout
 Route::get('/logout', function () {
     Auth::logout();
+    session()->invalidate();
     return redirect('/signin');
 });
 
