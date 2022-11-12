@@ -35,10 +35,10 @@ class LoginController extends Controller
                 session(['subs' => User::find(Auth::id())->farmers->first()->subscription]);
                 return redirect()->intended(route('farmers.dashboard'));
             } else if (Auth::user()->getUserType() == 'ADVISOR') {
+                dd(auth()->user());
                 session(['user_id' => User::find(Auth::id())->advisors->first()->id]);
-                dd("advisor dashboard");
-                //$request->session()->regenerate();
-                //return redirect()->intended(route('advisors.dashboard'));
+                $request->session()->regenerate();
+                return redirect()->intended(route('show'));
             } else {
                 session(['user_id' => User::find(Auth::id())->admins->first()->id]);
                 $request->session()->regenerate();

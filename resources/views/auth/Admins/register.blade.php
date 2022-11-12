@@ -22,13 +22,13 @@
 <form action="/admin/register" method="post">
 @csrf
 
-<span style="color: #ffffff"><b>Fisrt Name</b></span> <input type="text" name="firstName">
+<span><b>Fisrt Name</b></span> <input type="text" name="fname">
 @if($errors->has('firstName'))
 <span style="color: #eb1515"><b>{{$errors->first('firstName')}}</b></span>
 @endif
 <br><br>
 
-<span style="color: #ffffff"><b>Last Name</b></span> <input type="text" name="lastName">
+<span><b>Last Name</b></span> <input type="text" name="lastName">
 @if($errors->has('lastName'))
 <span style="color: #eb1515"><b>{{$errors->first('lastName')}}</b></span>
 @endif
@@ -40,9 +40,9 @@
 @endif
 <br><br>
 
-<span style="color: #ffffff"><b>Zip-Code</b></span> <input type="number" name="postalCode">
+<span><b>Zip-Code</b></span> <input type="number" name="postCode">
 @if($errors->has('postalCode'))
-<span style="color: #eb1515"><b>{{$errors->first('postalCode')}}</b></span>
+<b>{{$errors->first('postalCode')}}</b>
 @endif
 <br><br>
 

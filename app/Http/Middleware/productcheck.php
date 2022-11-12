@@ -16,6 +16,9 @@ class productcheck
      */
     public function handle(Request $request, Closure $next)
     {
+        if (session()->has('id')) {
+            return redirect()->to('dashboards.advisor');
+        }
         return $next($request);
     }
 }
