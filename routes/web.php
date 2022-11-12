@@ -145,7 +145,7 @@ Route::post('/edit',[educationController::class,'Update']);
 // Route::get('rdvisor/ad_profile1', function () {
 //     return view('dashboards.advisor');
 // })->name("advisors.dashboard");
-Route::get('/show',[DashbordsController::class,'Dashbord']);
+Route::get('/show',[DashbordsController::class,'Dashbord'])->name("advisors.dashboard");
 Route::post('/startupdate', [DashbordsController::class, 'UpdateDashbord'])->middleware('adminupdatecheck');
 
 
