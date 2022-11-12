@@ -1,15 +1,13 @@
 <?php
 
-namespace App\Models\Users;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Admins extends Model
+class education_qualification extends Model
 {
-    
     use HasFactory;
-    protected $fillable = [
-        'user_id',
-    ];
+    public $timestamps = false;
+
 }

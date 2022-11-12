@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth\Admins;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\Models\Users\Admins;
 use App\Models\User;

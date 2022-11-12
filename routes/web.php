@@ -13,6 +13,11 @@ use App\Http\Controllers\TestController;
 use Doctrine\DBAL\Driver\Middleware;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Advisor\AdvisorRegContoller;
+use App\Http\Controllers\Advisor\educationController;
+use App\Http\Controllers\Advisor\DashbordsController;
+use App\Http\Controllers\Advisor\RepliesController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -93,3 +98,41 @@ Route::post('/test', [TestController::class, 'test']);
 
 //Cart routes
 Route::get('/cart/{id}', [ProductController::class, 'addCart'])->name('cart.add');
+
+
+
+//Advisor Route
+//registration
+Route::get('/reg',[AdvisorRegContoller::class,'index']);
+Route::post('/reg',[AdvisorRegContoller::class,'Register']);
+
+
+//Qualification
+Route::get('/edu',[educationController::class,'Education']);
+Route::post('/Insertedu',[educationController::class,'Insertedu']);
+Route::get('/list',[educationController::class,'showqualification']);
+
+Route::get('delete/{id}',[educationController::class,'deletequalification']);
+
+Route::get('edit/{id}',[educationController::class,'ShowData']);
+Route::post('/edit',[educationController::class,'Update']);
+
+// Route::get('rdvisor/ad_profile1', function () {
+//     return view('dashboards.advisor');
+// })->name("advisors.dashboard");
+Route::get('/show',[DashbordsController::class,'Dashbord']);
+Route::post('/startupdate', [DashbordsController::class, 'UpdateDashbord'])->middleware('adminupdatecheck');
+
+
+
+Route::get('/qualificationShow',[DashbordsController::class,'qualificationShow']);
+
+//Replies
+Route::get('/reply',[RepliesController::class,'Replies']);
+Route::post('/reply',[RepliesController::class,'reply']);
+
+Route::get('/list2',[RepliesController::class,'showReplies']);
+Route::get('delete/{id}',[RepliesController::class,'deleteReplies']);
+
+Route::get('edit2/{id}',[RepliesController::class,'ShowReply']);
+Route::post('/edit2',[RepliesController::class,'RepliesUpdate']);

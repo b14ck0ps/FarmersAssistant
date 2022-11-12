@@ -19,18 +19,19 @@
 <body>
 <div class='center'>
 <h1>Registration</h1>
-<form action="/admin/register" method="post">
+<form action="/reg" method="post">
 @csrf
 
-<span><b>Fisrt Name</b></span> <input type="text" name="firstName">
-@if($errors->has('firstName'))
-<b>{{$errors->first('firstName')}}</b>
+<span><b>Fisrt Name</b></span> <input type="text" name="fname">
+
+@if($errors->has('fname'))
+<b>{{$errors->first('fname')}}</b>
 @endif
 <br><br>
 
-<span><b>Last Name</b></span> <input type="text" name="lastName">
-@if($errors->has('lastName'))
-<b>{{$errors->first('lastName')}}</b>
+<span><b>Last Name</b></span> <input type="text" name="lname">
+@if($errors->has('lname'))
+<b>{{$errors->first('lname')}}</b>
 @endif
 <br><br>
 
@@ -40,7 +41,7 @@
 @endif
 <br><br>
 
-<span><b>Zip-Code</b></span> <input type="number" name="postalcode">
+<span><b>Postalcode</b></span> <input type="text" name="postalcode">
 @if($errors->has('postalcode'))
 <b>{{$errors->first('postalcode')}}</b>
 @endif
