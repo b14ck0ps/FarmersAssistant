@@ -23,7 +23,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if (session()->get('total_quantity') === 0 || !isset($cart))
+                    @if (session()->get('total_quantity') === 0 || !isset($cart) || !is_array($cart))
                         <tr>
                             <td colspan="5" class="text-center py-3">
                                 <h1 class="text-2xl">Cart is empty</h1>

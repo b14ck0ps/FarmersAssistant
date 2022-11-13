@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Farmers;
 
-use App\Http\Controllers\Controller;
-use App\Models\OrderItems;
+use App\Models\User;
 use App\Models\Orders;
+use App\Models\OrderItems;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
@@ -21,6 +23,7 @@ class CheckoutController extends Controller
             $total += $item['price'] * $item['quantity'];
         }
 
+        session()->has('user_id') ?: session(['user_id' => User::find(Auth::id())->farmers->first()->id]);
         $order = Orders::create([
             'farmer_id' => session()->get('user_id'),
             'total' => $total
@@ -34,6 +37,8 @@ class CheckoutController extends Controller
             ]);
         }
         session()->forget(['cart', 'total_quantity']);
+        cookie()->queue(cookie()->forget('cart'));
+        cookie()->queue(cookie()->forget('total_quantity'));
         return redirect()->route('farmers.dashboard')->with('success', 'Order placed successfully');
     }
 }

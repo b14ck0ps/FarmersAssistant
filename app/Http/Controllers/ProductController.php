@@ -6,9 +6,30 @@ use App\Models\Plan;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Subscriptions;
+use Illuminate\Support\Facades\Cookie;
 
 class ProductController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $total_quantity = session()->get('total_quantity');
+            $cart = session()->get('cart');
+            if ($cart) {
+                $cart = serialize($cart);
+                cookie()->queue(cookie()->forever('cart', $cart));
+            } else {
+                session()->put('cart', unserialize(Cookie::get('cart')), true);
+            }
+            if ($total_quantity) {
+                cookie()->queue(cookie()->forever('total_quantity', session()->get('total_quantity')));
+            } else {
+                session()->put('total_quantity', Cookie::get('total_quantity'));
+            }
+            return $next($request);
+        });
+    }
     public function index()
     {
         $products =  Product::all();
@@ -18,9 +39,7 @@ class ProductController extends Controller
     public function addCart($id)
     {
         $total_quantity = session()->get('total_quantity');
-        if ($total_quantity) {
-            session()->put('total_quantity', $total_quantity + 1);
-        } else {
+        if (!$total_quantity) {
             session()->put('total_quantity', 1);
         }
         $product = Product::find($id);
@@ -40,14 +59,12 @@ class ProductController extends Controller
                     "total_price" => $product->price
                 ]
             ];
-            $total_quantity++;
             session()->put('cart', $cart);
             return redirect()->back()->with('success', 'Product added to cart successfully!');
         }
         // if cart not empty then check if this product exist then increment quantity
         if (isset($cart[$id])) {
             $cart[$id]['quantity']++;
-            $total_quantity++;
             $cart[$id]['total_price'] = $cart[$id]['quantity'] * $cart[$id]['price'];
             session()->put('cart', $cart);
             return redirect()->back()->with('success', 'Product added to cart successfully!');
@@ -61,8 +78,8 @@ class ProductController extends Controller
             "photo" => $product->image,
             "total_price" => $product->price
         ];
-        $total_quantity++;
         session()->put('cart', $cart);
+        session()->put('total_quantity', $total_quantity + 1);
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
     //cart
@@ -70,7 +87,7 @@ class ProductController extends Controller
     {
         $cart = session()->get('cart');
         $total_net_price = 0;
-        if (session()->has('cart')) {
+        if (session()->has('cart') &&  is_array(session()->get('cart'))) {
             foreach (session()->get('cart') as $item) {
                 $total_net_price += $item['total_price'];
             }
@@ -93,6 +110,10 @@ class ProductController extends Controller
             session()->put('cart', $cart);
             $total_quantity = session()->get('total_quantity');
             session()->put('total_quantity', $total_quantity - 1);
+            if (count($cart) == 0) {
+                cookie()->queue(cookie()->forget('cart'));
+                cookie()->queue(cookie()->forget('total_quantity'));
+            }
         }
         return redirect()->back()->with('success', 'Product removed successfully');
     }
