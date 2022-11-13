@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Farmer
 {
@@ -16,6 +17,7 @@ class Farmer
      */
     public function handle(Request $request, Closure $next)
     {
+        session()->has('user_type') ?: session(['user_type' => Auth::user()->getUserType()]);
         if (session('user_type') == 'FARMER') {
             return $next($request);
         } elseif (session('user_type') == 'ADMIN') {

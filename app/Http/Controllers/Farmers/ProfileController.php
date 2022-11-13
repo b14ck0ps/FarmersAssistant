@@ -20,6 +20,8 @@ class ProfileController extends Controller
 
     public function showProfile()
     {
+        session()->has('subs') ?: session(['subs' => User::find(Auth::id())->farmers->first()->subscription]);
+        session()->has('user_id') ?: session(['user_id' => User::find(Auth::id())->farmers->first()->id]);
         $mails = Mails::where('farmer_id', session('user_id'))->get();
         $mails->map(function ($mail) {
             $mail->advisor_name = User::find(Advisors::find($mail->advisor_id)->first()->user_id)->getFullName();

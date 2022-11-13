@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Plan;
+use App\Models\User;
+use Illuminate\Http\Request;
 use App\Models\Subscriptions;
 use App\Models\Users\Farmers;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SubscriptionsController extends Controller
 {
@@ -17,6 +19,7 @@ class SubscriptionsController extends Controller
 
     public function subscribe($id)
     {
+        session()->has('user_id') ?: session(['user_id' => User::find(Auth::id())->farmers->first()->id]);
         $plan = Plan::find($id);
         Subscriptions::create([
             'status' => 1,
