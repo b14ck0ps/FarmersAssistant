@@ -32,6 +32,7 @@ class RegistrationController extends Controller
                 'address' => 'required|max:100',
                 'email' => 'required|email|max:255|unique:users',
                 'username' => 'required|max:255|alpha_dash|unique:users',
+                'phone' => 'required|numeric|digits:11|unique:users',
                 'password' => [
                     'required',
                     'string',
@@ -54,7 +55,15 @@ class RegistrationController extends Controller
                 'city.string' => 'City must be a string',
                 'postCode.required' => 'Post code is required',
                 'postCode.numeric' => 'Post code must be a number',
-                'postCode.digits' => 'Post code must be 4 digits'
+                'postCode.digits' => 'Post code must be 4 digits',
+                'phone.required' => 'Phone number is required',
+                'phone.numeric' => 'Phone number must be a number',
+                'phone.digits' => 'Phone number must be 11 digits',
+                'phone.unique' => 'Phone number already exists',
+                'email.required' => 'Email is required',
+                'email.email' => 'Email must be a valid email',
+                'email.max' => 'Email must be less than 255 characters',
+                'email.unique' => 'Email already exists',
             ]
         );
         $photo = "default_avater.png";
