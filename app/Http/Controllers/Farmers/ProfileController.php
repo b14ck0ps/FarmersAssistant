@@ -74,9 +74,7 @@ class ProfileController extends Controller
 
         );
         // Validate the form data
-        if (is_null($request->password_old)) {
-            $request->password = Auth::user()->password;
-        } else {
+        if (!is_null($request->password_old)) {
             if (Hash::check($request->password_old, Auth::user()->password)) {
                 $this->validate($request, [
                     'password' => [
@@ -89,6 +87,7 @@ class ProfileController extends Controller
                         'confirmed'
                     ],
                 ]);
+                User::find(Auth::user()->id)->update(['password' => Hash::make($request->password)]);
             } else {
                 return back()->withErrors([
                     'invalid_password' => 'Old password is incorrect',
@@ -107,7 +106,6 @@ class ProfileController extends Controller
             'dob' => $request->dob,
             'address' => $request->address,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
         ]);
 
         if (isset($request->photo)) {
