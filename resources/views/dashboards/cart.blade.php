@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="w-[800px] m-auto mt-10">
+    <div class="w-[1200px] m-auto mt-10">
         <div class="overflow-x-auto relative">
             <table class="w-full text-sm text-left text-gray-200">
                 <thead class="text-xs uppercase bg-gray-700">
@@ -59,7 +59,7 @@
             </table>
         </div>
         <div class="bg-gray-700 p-4 mt-5">
-            <div class="flex justify-end gap-16">
+            <div class="flex justify-end gap-28">
                 @if (session('subs') == 1)
                     <div class="text-white text-sm">
                         Estimated Total : ৳ {{ $total_net_price }}
@@ -75,11 +75,12 @@
                         Total Price : ৳ {{ $total_net_price }}
                     </div>
                 @endif
-                <div class="">
-                    <a href="{{ route('checkout') }}"
-                        class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded">Order</a>
-                </div>
-
+                @if (session()->get('total_quantity') > 0)
+                    <div class="">
+                        <a href="{{ route('checkout') }}"
+                            class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded">Order</a>
+                    </div>
+                @endif
             </div>
         </div>
 
