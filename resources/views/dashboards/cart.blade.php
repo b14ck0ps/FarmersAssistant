@@ -59,14 +59,27 @@
             </table>
         </div>
         <div class="bg-gray-700 p-4 mt-5">
-            <div class="flex justify-end gap-[85px]">
-                <div class="text-white font-semibold">
-                    Total Price : ৳ {{ $total_net_price }} BDT
-                </div>
+            <div class="flex justify-end gap-16">
+                @if (session('subs') == 1)
+                    <div class="text-white text-sm">
+                        Estimated Total : ৳ {{ $total_net_price }}
+                    </div>
+                    <div class="mr-auto text-sm">
+                        <p>{{ $plan->planName }} Discount : {{ $plan->orderDiscount }}% </p>
+                    </div>
+                    <div class="text-white font-semibold">
+                        Discount Price : ৳ {{ $total_net_price_disc }}
+                    </div>
+                @else
+                    <div class="text-white font-semibold mr-16">
+                        Total Price : ৳ {{ $total_net_price }}
+                    </div>
+                @endif
                 <div class="">
                     <a href="{{ route('checkout') }}"
-                        class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded">Checkout</a>
+                        class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded">Order</a>
                 </div>
+
             </div>
         </div>
 
