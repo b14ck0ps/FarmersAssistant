@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Plan;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\Subscriptions;
 
 class ProductController extends Controller
 {
@@ -72,6 +74,13 @@ class ProductController extends Controller
             foreach (session()->get('cart') as $item) {
                 $total_net_price += $item['total_price'];
             }
+        }
+        // check subsctiption status
+        $subscription = Subscriptions::where('farmer_id', session('user_id'))->first();
+        if (isset($subscription) && $subscription->status == 1) {
+            $plan = Plan::find($subscription->plan_id);
+            $total_net_price_disc = $total_net_price - ($total_net_price * $plan->orderDiscount / 10);
+            return view('dashboards.cart', compact('cart', 'total_net_price', 'plan', 'total_net_price_disc'));
         }
         return view('dashboards.cart', compact('cart', 'total_net_price'));
     }
