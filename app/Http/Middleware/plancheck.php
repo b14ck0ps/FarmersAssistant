@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class plancheck
 {
@@ -16,10 +17,9 @@ class plancheck
      */
     public function handle(Request $request, Closure $next)
     {
-        if (session('user_type') == 'FARMER')
-        {
+        session()->has('user_type') ?: session(['user_type' => Auth::user()->getUserType()]);
+        if (session('user_type') == 'FARMER') {
             return redirect()->route('farmers.dashboard');
-
         } elseif (session('user_type') == 'ADMIN') {
 
             return $next($request);
@@ -30,4 +30,3 @@ class plancheck
         return $next($request);
     }
 }
-
