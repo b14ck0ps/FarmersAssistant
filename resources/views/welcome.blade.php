@@ -34,7 +34,7 @@
         @foreach ($products as $product)
             <div class="w-60 max-w-sm rounded-lg shadow-md bg-gray-900 border-gray-700 m-10" id="{{ $product->id }}">
                 <a href="#">
-                    <img class="p-8 rounded-t-lg" src="{{ URL::asset('/uploads/product') }}/{{ $product->image }}"
+                    <img class="p-8 rounded-t-lg h-56" src="{{ URL::asset('/uploads/product') }}/{{ $product->image }}"
                         alt="product image">
                 </a>
                 <div class="px-3 pb-5">
