@@ -12,13 +12,13 @@
                 @endif
                 @csrf
                 <p>Your Email:</p>
-                <x-forms.input type="email" name="email" placeholder="name@mail.com" />
+                <input type="email" name="email" placeholder="name@mail.com" @if (Cookie::has('adminemail')) value="{{ Cookie::get('adminemail') }}" @endif/>
                 <p>Password:</p>
-                <x-forms.input type="password" name="password" placeholder="********" />
+                <input type="password" name="password" placeholder="********"  @if (Cookie::has('adminpassword')) value="{{ Cookie::get('adminpassword') }}" @endif />
                 <div class="flex justify-between mt-3">
 
                     <div class="flex items-center">
-                        <input id="link-checkbox" type="checkbox" value="" class="w-4 h-4">
+                        <input id="link-checkbox" type="checkbox"  name ="remember" value="" class="w-4 h-4">
                         <label for="link-checkbox" class="ml-2 font-medium ">Remember
                             me</label>
                     </div>

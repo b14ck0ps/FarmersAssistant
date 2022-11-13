@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-
+use Cookie;
 
 class LoginController extends Controller
 {
@@ -40,7 +40,13 @@ class LoginController extends Controller
                 //return redirect()->intended(route('advisors.dashboard'));
             } else {
                 session(['user_id' => User::find(Auth::id())->admins->first()->id]);
-                $request->session()->regenerate();
+
+                // $request->session()->regenerate();
+                if($request->has('remember')){
+                    Cookie::queue('adminemail',$request->email,5);
+                    Cookie::queue('adminpassword',$request->password,5);
+                }
+
                 return redirect()->intended(route('admins.dashboard'));
             }
             return back()->withErrors([
