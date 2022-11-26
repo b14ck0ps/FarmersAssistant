@@ -35,4 +35,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/farmersProfileData', [ProfileController::class, 'farmersProfileData']);
     Route::patch('/updateProfile', [ProfileController::class, 'updateProfile']);
     Route::post('/sendMail', [MailController::class, 'send']);
+    Route::get('/mail/{id}', [MailController::class, 'mails']);
+    Route::get('/mails/search', [MailController::class, 'searchMails']);
+    Route::delete('/mails/delete/{id}', [MailController::class, 'deleteMail']);
 });
