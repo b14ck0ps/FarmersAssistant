@@ -32,7 +32,7 @@ Route::get('/allProducts', [ProductController::class, 'allproducts']);
 
 // *"farmersProfileData" route is for getting farmers profile data
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/farmersProfileData', [ProfileController::class, 'farmersProfileData']);
-    Route::post('/updateProfile', [ProfileController::class, 'updateProfile']);
+    Route::get('/farmersProfileData', [ProfileController::class, 'farmersProfileData']);
+    Route::patch('/updateProfile', [ProfileController::class, 'updateProfile']);
     Route::post('/sendMail', [MailController::class, 'send']);
 });
