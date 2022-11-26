@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth\RegistrationController;
 use App\Http\Controllers\Api\Farmers\ProfileController;
+use App\Http\Controllers\Api\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,4 +34,5 @@ Route::get('/allProducts', [ProductController::class, 'allproducts']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/farmersProfileData', [ProfileController::class, 'farmersProfileData']);
     Route::post('/updateProfile', [ProfileController::class, 'updateProfile']);
+    Route::post('/sendMail', [MailController::class, 'send']);
 });
