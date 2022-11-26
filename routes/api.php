@@ -30,4 +30,7 @@ Route::post('/login', [LoginController::class, 'Login']);
 Route::get('/allProducts', [ProductController::class, 'allproducts']);
 
 // *"farmersProfileData" route is for getting farmers profile data
-Route::post('/farmersProfileData', [ProfileController::class, 'farmersProfileData'])->middleware('auth:sanctum');
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/farmersProfileData', [ProfileController::class, 'farmersProfileData']);
+    Route::post('/updateProfile', [ProfileController::class, 'updateProfile']);
+});
