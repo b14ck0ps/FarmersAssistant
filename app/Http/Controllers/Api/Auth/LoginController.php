@@ -26,7 +26,11 @@ class LoginController extends Controller
             if (Auth::user()->getUserType() == 'FARMER') {
                 session(['user_id' => User::find(Auth::id())->farmers->first()->id]);
                 session(['subs' => User::find(Auth::id())->farmers->first()->subscription]);
+                //crete a sanctum token for the user
+                $token = Auth::user()->createToken('authToken')->plainTextToken;
                 return response()->json([
+                    'user' => Auth::user(),
+                    'token' => $token,
                     'message' => 'success',
                     'user_type' => 'FARMER',
                     'user_id' => User::find(Auth::id())->farmers->first()->id,
