@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Auth\LoginController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth\RegistrationController;
@@ -21,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //Farmers Routes start from here
 Route::post('/register', [RegistrationController::class, 'Registration']);
+Route::post('/login', [LoginController::class, 'Login']);
