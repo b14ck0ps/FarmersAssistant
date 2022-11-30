@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-class Main extends Component {
-    state = {};
-    render() {
-        return <h1>Hi</h1>;
-    }
-}
+import Home from "./components/Home";
 
-export default Main;
+export default function Main() {
+    return <Home />;
+}

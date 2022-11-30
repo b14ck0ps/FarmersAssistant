@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
+/* @layer base {
     body {
         @apply bg-gray-800 text-slate-200;
     }
@@ -11,4 +11,4 @@
     textarea {
         @apply bg-gray-800 text-white;
     }
-}
+} */
