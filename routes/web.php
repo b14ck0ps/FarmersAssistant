@@ -27,7 +27,10 @@ use Illuminate\Support\Facades\Auth;
 
 //* get routes
 
-Route::get('/', [ProductController::class, 'index'])->name('home');
+// Route::get('/', [ProductController::class, 'index'])->name('home');
+Route::get('/', function () {
+    return view('ReactApp');
+});
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/signup', [RegistrationController::class, 'showRegistrationForm']);
