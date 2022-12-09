@@ -45,19 +45,19 @@
 
                                     </span>
                                     <div data-popover="" id="popover-right" role="tooltip"
-                                        class="inline-block absolute invisible z-10 w-64 text-sm font-light rounded-lg border  shadow-sm opacity-0 transition-opacity duration-300 text-gray-400 border-gray-600 bg-gray-800"
+                                        class="inline-block absolute invisible z-10 w-64 text-sm font-light rounded-lg border  shadow-sm opacity-0 transition-opacity duration-300 text-gray-400 border-gray-300 "
                                         style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(10px, 0px);"
                                         data-popper-reference-hidden="" data-popper-escaped=""
                                         data-popper-placement="right">
-                                        <div class="py-2 px-3 rounded-t-lg border-b  border-gray-600 bg-gray-700">
-                                            <h3 class="font-semibold  text-center text-white"><span
+                                        <div class="py-2 px-3 rounded-t-lg border-b  border-gray-300">
+                                            <h3 class="font-semibold  text-center "><span
                                                     class="font-bold">{{ $plan->planName }} </span>Subscription
                                             </h3>
                                         </div>
                                         <div class="py-2 px-3">
                                             <div>
 
-                                                <ul class="space-y-4 text-left text-gray-500 dark:text-gray-400">
+                                                <ul class="space-y-4 text-left text-gray-500">
                                                     <li class="flex items-center space-x-3">
                                                         <!-- Icon -->
                                                         <svg class="flex-shrink-0 w-5 h-5 text-green-400"
@@ -68,7 +68,7 @@
                                                                 clip-rule="evenodd"></path>
                                                         </svg>
                                                         <span>Discount: <span
-                                                                class="font-semibold text-gray-900 dark:text-white">{{ $plan->orderDiscount }}
+                                                                class="font-semibold text-gray-900 ">{{ $plan->orderDiscount }}
                                                                 %</span></span>
                                                     </li>
                                                     <li class="flex items-center space-x-3">
@@ -81,7 +81,7 @@
                                                                 clip-rule="evenodd"></path>
                                                         </svg>
                                                         <span>Ends in: <span
-                                                                class="font-semibold text-gray-900 dark:text-white">{{ $sub_end }}
+                                                                class="font-semibold text-gray-900 ">{{ $sub_end }}
                                                                 Days</span></span>
                                                     </li>
                                                     <li class="flex items-center space-x-3">
@@ -94,7 +94,7 @@
                                                                 clip-rule="evenodd"></path>
                                                         </svg>
                                                         <span>Since: <span
-                                                                class="font-semibold text-gray-900 dark:text-white">{{ date('M j, Y', strtotime($subscription->start_date)) }}
+                                                                class="font-semibold text-gray-900 ">{{ date('M j, Y', strtotime($subscription->start_date)) }}
                                                             </span></span>
                                                     </li>
                                                 </ul>
@@ -207,7 +207,7 @@
                             <div class="mb-3 w-96 md:w-auto">
                                 <div class="input-group relative flex flex-row gap-5 items-center w-full mb-4">
                                     <input type="search" name="search" id="search"
-                                        class="form-control bg-gray-800 relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal bg-clip-padding border border-solid rounded transition ease-in-out m-0 focus:border-blue-600 focus:outline-none"
+                                        class="form-control  relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal bg-clip-padding border border-solid rounded transition ease-in-out m-0 focus:border-blue-600 focus:outline-none"
                                         placeholder="Search by subject" aria-label="Search"
                                         aria-describedby="button-addon3">
                                     <button

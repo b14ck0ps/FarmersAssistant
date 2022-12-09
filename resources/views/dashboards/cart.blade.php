@@ -2,8 +2,8 @@
 @section('content')
     <div class="w-[1200px] m-auto mt-10">
         <div class="overflow-x-auto relative">
-            <table class="w-full text-sm text-left text-gray-200">
-                <thead class="text-xs uppercase bg-gray-700">
+            <table class="w-full text-sm text-left ">
+                <thead class="text-xs uppercase bg-gray-100">
                     <tr>
                         <th scope="col" class="py-3 px-6">
                             Product name
@@ -31,7 +31,7 @@
                         </tr>
                     @else
                         @foreach ($cart as $item)
-                            <tr class="border-b border-gray-700 text-white">
+                            <tr class="border-b border-gray-700 ">
                                 <td class="py-3 px-6 font-semibold">
                                     {{ $item['title'] }}
                                 </td>
@@ -58,27 +58,27 @@
                 </tbody>
             </table>
         </div>
-        <div class="bg-gray-700 p-4 mt-5">
+        <div class="bg-gray-100 p-4 mt-5">
             <div class="flex justify-end gap-28">
                 @if (session('subs') == 1)
-                    <div class="text-white text-sm">
+                    <div class=" text-sm">
                         Estimated Total : ৳ {{ $total_net_price }}
                     </div>
                     <div class="mr-auto text-sm">
                         <p>{{ $plan->planName }} Discount : {{ $plan->orderDiscount }}% </p>
                     </div>
-                    <div class="text-white font-semibold">
+                    <div class=" font-semibold">
                         Discount Price : ৳ {{ $total_net_price_disc }}
                     </div>
                 @else
-                    <div class="text-white font-semibold mr-16">
+                    <div class=" font-semibold mr-16">
                         Total Price : ৳ {{ $total_net_price }}
                     </div>
                 @endif
                 @if (session()->get('total_quantity') > 0)
                     <div class="">
                         <a href="{{ route('checkout') }}"
-                            class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded">Order</a>
+                            class="bg-green-500 hover:bg-green-600  font-semibold py-2 px-4 rounded">Order</a>
                     </div>
                 @endif
             </div>

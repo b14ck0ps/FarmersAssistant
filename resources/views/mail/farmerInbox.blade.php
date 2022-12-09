@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
     <div class="flex flex-col items-center justify-center">
-        <div class=" flex-grow w-[800px] m-10 border rounded-2xl border-gray-700">
+        <div class=" flex-grow w-[800px] m-10 border rounded-2xl border-gray-200">
             <!-------Title------>
-            <h1 class="flex items-center text-5xl font-extrabold text-gray-200 p-5">Seek Advice<span
+            <h1 class="flex items-center text-5xl font-extrabold  p-5">Seek Advice<span
                     class=" text-2xl font-semibold mr-2 px-2.5 py-0.5 rounded bg-blue-200 text-blue-800 ml-2">PRO</span>
             </h1>
             @if (session('success'))
@@ -18,7 +18,7 @@
             <form class="p-5" method="POST" action="{{ route('send.mail') }}">
                 @csrf
                 <select name="advisor_id"
-                    class="text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  bg-gray-700  border-gray-600  placeholder-gray-400  text-white">
+                    class=" border border-gray-200 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5    placeholder-gray-400  ">
                     <option selected>Choose an Advisor</option>
                     @foreach ($advisors as $advisor)
                         <option value="{{ $advisor->id }}">{{ $advisor->full_name }}</option>
@@ -34,7 +34,7 @@
                         <x-far-pen-to-square class="w-5 h-5 text-gray-500" />
                     </div>
                     <input name="subject" type="text" id="input-group-1" value="{{ old('subject') }}"
-                        class="text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5   bg-gray-700  border-gray-600  placeholder-gray-400  text-white"
+                        class="border border-gray-200 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5     placeholder-gray-400  "
                         placeholder="Write a Short details">
                 </div>
                 @error('subject')
@@ -48,7 +48,7 @@
                             <div class="flex flex-wrap items-center divide-gray-700 sm:divide-x ">
                                 <div class="flex items-center space-x-1 sm:pr-4">
                                     <button type="button"
-                                        class="p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-700 ">
+                                        class="p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover: ">
                                         <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
@@ -58,7 +58,7 @@
                                         <span class="sr-only">Attach file</span>
                                     </button>
                                     <button type="button"
-                                        class="p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-700 ">
+                                        class="p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover: ">
                                         <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
@@ -68,7 +68,7 @@
                                         <span class="sr-only">Embed map</span>
                                     </button>
                                     <button type="button"
-                                        class="p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-700 ">
+                                        class="p-2 text-gray-500 rounded cursor-pointer hover:text-gray-900 hover: ">
                                         <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
@@ -83,7 +83,7 @@
                                 </div>
                             </div>
                             <div id="tooltip-fullscreen" role="tooltip"
-                                class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip "
+                                class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium  bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip "
                                 style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 8px);"
                                 data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="bottom">
                                 Show full screen
@@ -94,8 +94,7 @@
                         <div class="py-2 px-4 rounded-b-lg ">
                             <label for="editor" class="sr-only">New message</label>
                             <textarea name="body" id="editor" rows="8" value="{{ old('body') }}"
-                                class="block px-0 w-full text-sm text-white border-0  focus:ring-0 " placeholder="Write your problems..."
-                                required=""></textarea>
+                                class="block px-0 w-full text-sm  border-0  focus:ring-0 " placeholder="Write your problems..." required=""></textarea>
                         </div>
                     </div>
                 </div>
@@ -105,7 +104,7 @@
                     </div>
                 @enderror
                 <button type="submit"
-                    class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200">
+                    class="text-white inline-flex items-center px-5 py-2.5 text-sm font-medium text-center  bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200">
                     Send
                 </button>
             </form>
