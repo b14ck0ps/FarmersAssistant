@@ -12,6 +12,7 @@ import "./bootstrap";
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 // import "./components/Nav";
-import "./components/Example";
+// import "./components/Example";
 import "./components/Home";
 import "./components/Login";
+import "./components/Signup";

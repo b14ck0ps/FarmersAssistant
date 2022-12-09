@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('ReactUI.Layout.app')
 @section('content')
-    <div class="container w-[300px] md:w-[600px] m-auto p-5">
+    <div id="signup"></div>
+    {{-- <div class="container w-[300px] md:w-[600px] m-auto p-5">
         <p class=" text-3xl p-5 mb-5 text-center">Registration</p>
         <form method="POST" action="/register" enctype="multipart/form-data">
             @csrf
@@ -144,5 +145,5 @@
             <button type="submit"
                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Register</button>
         </form>
-    </div>
+    </div> --}}
 @endsection

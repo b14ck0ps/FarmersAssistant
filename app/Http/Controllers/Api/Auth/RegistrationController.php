@@ -22,7 +22,7 @@ class RegistrationController extends Controller
                 'fname' => 'required|max:30|alpha',
                 'lname' => 'required|max:30|alpha',
                 'city' => 'required|max:30|string',
-                'postCode' => 'required|numeric|digits:4',
+                'postCode' => 'required|numeric',
                 'gender' => 'required',
                 'dob' => 'required|date',
                 'address' => 'required|max:100',
@@ -103,6 +103,6 @@ class RegistrationController extends Controller
             'user' => $farmer,
             'user_type' => session('user_type'),
             'user_id' => session('user_id'),
-        ]);
+        ], 200);
     }
 }
