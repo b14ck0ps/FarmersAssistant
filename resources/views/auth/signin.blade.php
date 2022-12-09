@@ -1,12 +1,13 @@
-@extends('layouts.app')
+@extends('ReactUI.Layout.app')
 @section('content')
-    <div class="flex justify-center items-center h-screen">
+    <div id="login"></div>
+    {{-- <div class="flex justify-center items-center h-screen">
         <form action="login" method="POST">
             @csrf
             <div class="flex flex-col bg-gray-900 rounded md:px-8 py-10">
                 <h1 class=" text-2xl font-bold text-gray-200 text-center mb-8 md:text-3xl md:mb-10">Sign in to your account
                 </h1>
-                {{-- error --}}
+
                 @if ($errors->any())
                     <h4 class="text-red-700 text-center p-3">{{ $errors->first() }}</h4>
                 @endif
@@ -30,5 +31,5 @@
         </form>
         <a class="text-center mt-5 text-blue-500" href="/signup">Dont't have an account?</a>
     </div>
-    </div>
+    </div> --}}
 @endsection

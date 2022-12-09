@@ -27,9 +27,9 @@ use Illuminate\Support\Facades\Auth;
 
 //* get routes
 
-// Route::get('/', [ProductController::class, 'index'])->name('home');
+Route::get('/x', [ProductController::class, 'index'])->name('home');
 Route::get('/', function () {
-    return view('ReactApp');
+    return view('ReactUI.Home');
 });
 
 Route::middleware(['guest'])->group(function () {

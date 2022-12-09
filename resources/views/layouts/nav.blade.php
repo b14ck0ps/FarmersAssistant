@@ -1,5 +1,5 @@
 {{-- nav bar --}}
-<div class="bg-gray-900 shadow shadow-gray-700">
+<div class="shadow shadow-gray-300">
     <div class="flex md justify-between lg:justify-around items-center">
         <div class="font-Bungee text-xl lg:text-3xl px-4"><a href="/">Farmer's Assistant</a></div>
 
@@ -14,15 +14,15 @@
                             @svg('tni-signin-o', 'w-5') sign in</a></div>
                 @endif
             @endguest
-        {{-- /////////// --}}
-        @guest
+            {{-- /////////// --}}
+            @guest
 
-            <div><a class="flex items-center gap-2 hover:text-orange-500" href="/signin_signup">
-                    @svg('iconsax-bro-signpost', 'w-5') Admin</a></div>
+                <div><a class="flex items-center gap-2 hover:text-orange-500" href="/signin_signup">
+                        @svg('iconsax-bro-signpost', 'w-5') Admin</a></div>
 
-        @endguest
+            @endguest
 
-        {{-- ////////// --}}
+            {{-- ////////// --}}
             <div class="flex items-center gap-2">
                 <a href="/cart" class="flex items-center gap-2 hover:text-orange-500">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
