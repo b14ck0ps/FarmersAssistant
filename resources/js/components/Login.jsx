@@ -6,6 +6,8 @@ export default function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    const [err, setErr] = useState(false)
+
     const handleSubmit = (e) => {
         e.preventDefault()
         const data = { email, password }
@@ -15,7 +17,7 @@ export default function Login() {
                     window.location = '/profile'
                 }
             }).catch(err => {
-                console.log(err)
+                setErr(true)
             })
     }
     return (
@@ -23,6 +25,12 @@ export default function Login() {
             <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow-md sm:p-6 md:p-80">
                 <form className="space-y-6" action="#">
                     <h5 className="text-xl font-medium text-gray-900 text-center">Sign in to your account</h5>
+
+                    {err ? <div className="mt-3 text-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                        <strong className="font-bold">Error! </strong>
+                        <span className="block sm:inline">Invalid email or password</span>
+                    </div> : null}
+
                     <div>
                         <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
                         <input
