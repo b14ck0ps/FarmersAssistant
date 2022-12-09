@@ -16,3 +16,4 @@ import "./bootstrap";
 import "./components/Home";
 import "./components/Login";
 import "./components/Signup";
+import "./components/Subs";

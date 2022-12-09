@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('ReactUI.Layout.app')
 @section('content')
-    <div class="flex flex-col items-center justify-center max-h-screen lg:overflow-hidden lg:mt-44">
+    <div id="subs"></div>
+    {{-- <div class="flex flex-col items-center justify-center max-h-screen lg:overflow-hidden lg:mt-44">
         @if (session()->has('info'))
             <div class="bg-yellow-100 border border-yellow-400 text-yellow-700 text-center px-4 py-3 rounded relative w-[600px] m-auto mb-10"
                 role="alert">
@@ -65,5 +66,5 @@
                 </div>
             @endforeach
         </div>
-    </div>
+    </div> --}}
 @endsection

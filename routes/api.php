@@ -31,7 +31,8 @@ Route::post('/login', [LoginController::class, 'Login']);
 // *"allProducts" route is for getting all products from the database
 Route::get('/allProducts', [ProductController::class, 'allproducts']);
 Route::post('/searchProducts', [ProductController::class, 'searchProducts']);
-Route::middleware('auth:sanctum')->group(function () {
+// Route::middleware('auth:sanctum')->group(function () {
+Route::group([], function () {
     Route::get('/farmersProfileData', [ProfileController::class, 'farmersProfileData']);
     Route::patch('/updateProfile', [ProfileController::class, 'updateProfile']);
     // *Mail routes start from here
