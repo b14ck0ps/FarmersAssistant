@@ -28,6 +28,7 @@ class LoginController extends Controller
                 session(['subs' => User::find(Auth::id())->farmers->first()->subscription]);
                 //crete a sanctum token for the user
                 $token = Auth::user()->createToken('authToken')->plainTextToken;
+                auth()->login(Auth::user());
                 return response()->json([
                     'user' => Auth::user(),
                     'token' => $token,
