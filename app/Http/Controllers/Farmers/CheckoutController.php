@@ -6,8 +6,10 @@ use App\Models\User;
 use App\Models\Orders;
 use App\Models\OrderItems;
 use Illuminate\Http\Request;
+use App\Mail\OrderMailService;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class CheckoutController extends Controller
 {
@@ -33,12 +35,16 @@ class CheckoutController extends Controller
             OrderItems::create([
                 'quantity' => $item['quantity'],
                 'product_id' => $item['id'],
-                'order_id' => $order->id
+                'orders_id' => $order->id
             ]);
         }
         session()->forget(['cart', 'total_quantity']);
         cookie()->queue(cookie()->forget('cart'));
         cookie()->queue(cookie()->forget('total_quantity'));
+
+        // mail trap service
+        Mail::to(auth()->user()->email)->send(new OrderMailService($order));
+
         return redirect()->route('farmers.dashboard')->with('success', 'Order placed successfully');
     }
 }
