@@ -58,13 +58,12 @@ export default function Edit() {
         axios.patch('/api/updateProfile', user)
             .then(res => {
                 console.log(res)
+                window.location = '/profile'
 
             })
             .catch(err => {
-                console.log(err.response.data.errors);
                 if (err.response.data) {
                     setErr(err.response.data.errors)
-                    console.log(error);
                 }
             })
     }
@@ -81,7 +80,7 @@ export default function Edit() {
                     <form method="POST" action="/updateProfile" encType="multipart/form-data"
                         onSubmit={handleSubmit}
                     >
-                        <p>{error.response && error.response.data.errors}</p>
+
                         <label className="block mb-2 text-sm font-medium  text-gray-300" htmlFor="file_input">Upload
                             Profile Picture</label>
                         <input name="photo"
@@ -129,7 +128,7 @@ export default function Edit() {
                                     placeholder="123-45-678" required=""
                                     value={user.phone} onChange={(e) => handleChange(e)}
                                 />
-                                <p className="text-red-500 text-xs italic"> {error.number}</p>
+                                <p className="text-red-500 text-xs italic"> {error.phone}</p>
                             </div>
                             <div>
                                 <label htmlFor="City" className="block mb-2 text-sm font-medium  ">City</label>
