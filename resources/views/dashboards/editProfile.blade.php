@@ -1,6 +1,9 @@
-@extends('layouts.app')
+@extends('ReactUI.Layout.app')
 @section('content')
-    <div class="container w-[300px] md:w-[600px] m-auto p-5">
+    @csrf
+    <div id="edit"></div>
+@endsection
+{{--  <div class="container w-[300px] md:w-[600px] m-auto p-5">
         <img class="rounded-full mx-auto h-40 w-40  shadow"
             src="{{ URL::asset('uploads/avater') }}/{{ Auth::User()->photo }}">
         <h1 class="text-center text-2xl font-bold mt-5">Edit Profile</h1>
@@ -148,5 +151,4 @@
         <button type="submit"
             class="text-white border border-gray-200 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Update</button>
         </form>
-    </div>
-@endsection
+    </div> --}}

@@ -25,7 +25,7 @@ class ProfileController extends Controller
     public function farmersProfileData(Request $request)
     {
         //make a hased token for the user
-        $user = auth('sanctum')->user();
+        $user = auth()->user();
         $farmers = $user->farmers->first();
         $mails = Mails::where('farmer_id', $farmers->id)->get();
         $mails->map(function ($mail) {
@@ -50,12 +50,12 @@ class ProfileController extends Controller
     }
     public function updateProfile(Request $request)
     {
-        $user = auth('sanctum')->user();
+        $user = auth()->user();
         $this->validate(
             $request,
             [
-                'fname' => 'required|max:30|alpha',
-                'lname' => 'required|max:30|alpha',
+                'firstName' => 'required|max:30|alpha',
+                'lastName' => 'required|max:30|alpha',
                 'city' => 'required|max:30|string',
                 'postCode' => 'required|numeric|digits:4',
                 'gender' => 'required',
@@ -66,12 +66,12 @@ class ProfileController extends Controller
                 'username' => 'required|max:255|alpha_dash|unique:users,username,' . $user->id,
             ],
             [
-                'fname.required' => 'First name is required',
-                'fname.max' => 'First name must be less than 30 characters',
-                'fname.alpha' => 'First name must be only letters',
-                'lname.required' => 'Last name is required',
-                'lname.max' => 'Last name must be less than 30 characters',
-                'lname.alpha' => 'Last name must be only letters',
+                'firstName.required' => 'First name is required',
+                'firstName.max' => 'First name must be less than 30 characters',
+                'firstName.alpha' => 'First name must be only letters',
+                'lastName.required' => 'Last name is required',
+                'lastName.max' => 'Last name must be less than 30 characters',
+                'lastName.alpha' => 'Last name must be only letters',
                 'city.required' => 'City is required',
                 'city.max' => 'City must be less than 30 characters',
                 'city.string' => 'City must be a string',
@@ -113,8 +113,8 @@ class ProfileController extends Controller
         }
         // Create and save the farmer
         User::find($user->id)->update([
-            'firstName' => $request->fname,
-            'lastName' => $request->lname,
+            'firstName' => $request->firstName,
+            'lastName' => $request->lastName,
             'username' => $request->username,
             'phone' => $request->phone,
             'city' => $request->city,
