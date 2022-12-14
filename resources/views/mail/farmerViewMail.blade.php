@@ -9,12 +9,12 @@
                         alt="">
                     <div class="space-y-1 font-medium text-white">
                         <p>{{ $advisor->firstName }} {{ $advisor->lastName }}</p>
-                        <div class="flex items-center text-sm  text-gray-400">
+                        <div class="flex items-center text-sm  text-black">
                             {{ $advisor->email }}
                         </div>
                     </div>
                 </div>
-                <ul class="space-y-4 text-sm  text-gray-400">
+                <ul class="space-y-4 text-sm  text-black">
                     <li class="flex items-center"><svg aria-hidden="true" class="w-4 h-4 mr-1.5" fill="currentColor"
                             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd"
@@ -33,14 +33,14 @@
                 <div class="flex items-start mb-5">
                     <div class="pr-4">
                         <footer>
-                            <p class="mb-2 text-sm  text-gray-400">Sent on: <time
+                            <p class="mb-2 text-sm  text-black">Sent on: <time
                                     datetime="2022-01-20 19:00">{{ $mail->created_at }}</time></p>
                         </footer>
                         <h4 class="text-xl font-bold text-white overflow-hidden">{{ $mail->subject }}
                         </h4>
                     </div>
                 </div>
-                <p class="mb-2 font-light  text-gray-400 overflow-hidden"> {{ $mail->body }}
+                <p class="mb-2 font-light  text-black overflow-hidden"> {{ $mail->body }}
                 </p>
                 <div class="border-t border-gray-700 p-5  mt-24 overflow-hidden">
                     {{ $mail->reply ?? 'Your advisor\'s reply will be visible here...' }}

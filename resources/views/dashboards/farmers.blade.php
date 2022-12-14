@@ -249,14 +249,13 @@
                                             @foreach ($mails as $mail)
                                                 <tr class="border-b">
                                                     <td
-                                                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-blue-300 underline ">
+                                                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-black underline ">
                                                         <a class="hover:text-blue-500"
                                                             href="/view/mail/{{ $mail->id }}">
                                                             {{ $mail->id }}
                                                         </a>
                                                     </td>
-                                                    <td
-                                                        class="text-sm font-light px-6 py-4 whitespace-nowrap text-blue-300">
+                                                    <td class="text-sm font-light px-6 py-4 whitespace-nowrap  text-black">
                                                         <a class="hover:text-blue-500"
                                                             href="/view/mail/{{ $mail->id }}">
                                                             {{ $mail->subject }}

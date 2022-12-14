@@ -40,12 +40,12 @@ class MailController extends Controller
                 'advisor_id.integer' => 'Select an advisor',
             ]
         );
-
+        $user =  auth()->user();
         Mails::create([
             'subject' => $request->subject,
             'body' => $request->body,
             'advisor_id' => $request->advisor_id,
-            'farmer_id' => session('user_id'),
+            'farmer_id' => $user->farmers->first()->id,
         ]);
         return redirect()->back()->with('success', 'Mail sent successfully');
     }
