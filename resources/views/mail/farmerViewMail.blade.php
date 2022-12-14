@@ -1,6 +1,8 @@
-@extends('layouts.app')
+@extends('ReactUI.Layout.app')
 @section('content')
-    <div class="m-5 lg:m-auto xl:w-[1200px] p-5 lg:px-24 lg:py-10 border border-gray-700 rounded-3xl lg:mt-20">
+    @csrf
+    <div id="mail"></div>
+    {{-- <div class="m-5 lg:m-auto xl:w-[1200px] p-5 lg:px-24 lg:py-10 border border-gray-700 rounded-3xl lg:mt-20">
 
         <article class="md:gap-8 md:grid md:grid-cols-3">
             <div>
@@ -64,5 +66,5 @@
             </form>
         </article>
 
-    </div>
+    </div> --}}
 @endsection
